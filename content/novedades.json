@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "titulo": "Llegaron sillones nuevos",
+      "texto": "Nuevos modelos de living en tela antimanchas. Vení a probarlos al local.",
+      "foto": "img/ambiente.webp",
+      "etiqueta": "Novedad",
+      "publicado": true
+    },
+    {
+      "titulo": "Hasta 6 cuotas en comedores",
+      "texto": "Consultá los planes vigentes por WhatsApp.",
+      "foto": "img/cat-comedor.webp",
+      "etiqueta": "Oferta",
+      "publicado": true
+    }
+  ]
+}

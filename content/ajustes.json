@@ -1,0 +1,21 @@
+{
+  "whatsapp": "5493816566975",
+  "telefono_visible": "381 656-6975",
+  "horarios": [
+    {
+      "dias": "Lunes a viernes",
+      "horas": "9 a 13 · 17 a 21"
+    },
+    {
+      "dias": "Sábados",
+      "horas": "9 a 13"
+    },
+    {
+      "dias": "Domingos",
+      "horas": "Cerrado"
+    }
+  ],
+  "cuotas": "Pagá con tarjeta de crédito en cuotas. Consultá los planes vigentes antes de comprar.",
+  "envio": "Entregamos en San Miguel de Tucumán y alrededores. Te pasamos el costo junto con el presupuesto.",
+  "posventa": "Si algo llega con un problema, escribinos con una foto por WhatsApp y lo resolvemos."
+}

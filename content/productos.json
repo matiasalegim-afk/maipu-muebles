@@ -1,0 +1,108 @@
+{
+  "items": [
+    {
+      "nombre": "Sofá Siena 3 cuerpos",
+      "categoria": "living",
+      "precio": "",
+      "medidas": "210 × 90 × 85 cm",
+      "material": "Cuero ecológico, madera",
+      "descripcion": "Tapizado en cuero ecológico color suela, patas de madera maciza. Asiento profundo para usar todos los días.",
+      "fotos": [
+        "img/p-sofa-cuero.webp"
+      ],
+      "destacado": true,
+      "publicado": true
+    },
+    {
+      "nombre": "Esquinero Bruno",
+      "categoria": "living",
+      "precio": "",
+      "medidas": "260 × 160 cm",
+      "material": "Tela antimanchas",
+      "descripcion": "Sillón esquinero en tela antimanchas gris grafito. Ideal para livings familiares.",
+      "fotos": [
+        "img/p-esquinero.webp"
+      ],
+      "destacado": true,
+      "publicado": true
+    },
+    {
+      "nombre": "Butaca Capitoné",
+      "categoria": "living",
+      "precio": "",
+      "medidas": "70 × 75 × 95 cm",
+      "material": "Pana, madera laqueada",
+      "descripcion": "Butaca tapizada con respaldo capitoné y patas torneadas laqueadas.",
+      "fotos": [
+        "img/p-capitone.webp"
+      ],
+      "destacado": true,
+      "publicado": true
+    },
+    {
+      "nombre": "Sofá Nórdico 2 cuerpos",
+      "categoria": "living",
+      "precio": "",
+      "medidas": "170 × 85 × 80 cm",
+      "material": "Tela lino, paraíso",
+      "descripcion": "Líneas simples, tela gris perla y patas cónicas. Entra en livings chicos.",
+      "fotos": [
+        "img/p-sofa-gris.webp"
+      ],
+      "destacado": true,
+      "publicado": true
+    },
+    {
+      "nombre": "Juego Tulip redondo",
+      "categoria": "comedor",
+      "precio": "",
+      "medidas": "Mesa Ø 90 cm + 4 sillas",
+      "material": "Madera",
+      "descripcion": "Mesa redonda blanca con 4 sillas tipo Eames. Para cocina-comedor.",
+      "fotos": [
+        "img/p-mesa-redonda.webp"
+      ],
+      "destacado": false,
+      "publicado": true
+    },
+    {
+      "nombre": "Silla Oslo",
+      "categoria": "sillas",
+      "precio": "",
+      "medidas": "Altura 82 cm",
+      "material": "Ecocuero, haya",
+      "descripcion": "Asiento tapizado negro y patas de madera natural. Se vende por unidad.",
+      "fotos": [
+        "img/p-silla-negra.webp"
+      ],
+      "destacado": false,
+      "publicado": true
+    },
+    {
+      "nombre": "Butaca Concha",
+      "categoria": "sillas",
+      "precio": "",
+      "medidas": "70 × 75 × 70 cm",
+      "material": "Tapizado, madera",
+      "descripcion": "Asiento curvo blanco sobre patas de madera. Para el rincón de lectura.",
+      "fotos": [
+        "img/p-butaca.webp"
+      ],
+      "destacado": false,
+      "publicado": true
+    },
+    {
+      "nombre": "Juego de dormitorio Alba",
+      "categoria": "dormitorio",
+      "precio": "",
+      "medidas": "2 plazas / Queen",
+      "material": "Pana",
+      "descripcion": "Respaldo tapizado capitoné, mesas de luz y banqueta pie de cama.",
+      "fotos": [
+        "img/cat-dormitorio.webp"
+      ],
+      "destacado": false,
+      "publicado": true
+    }
+  ]
+}

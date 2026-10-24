@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "id": "living",
+      "nombre": "Living",
+      "foto": "img/cat-living.webp"
+    },
+    {
+      "id": "comedor",
+      "nombre": "Comedor",
+      "foto": "img/cat-comedor.webp"
+    },
+    {
+      "id": "dormitorio",
+      "nombre": "Dormitorio",
+      "foto": "img/cat-dormitorio.webp"
+    },
+    {
+      "id": "guardado",
+      "nombre": "Guardado",
+      "foto": "img/cat-guardado.webp"
+    },
+    {
+      "id": "sillas",
+      "nombre": "Sillas y butacas",
+      "foto": "img/cat-sillas.webp"
+    }
+  ]
+}

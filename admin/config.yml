@@ -1,0 +1,107 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: "Panel: crear {{collection}} {{slug}}"
+    update: "Panel: actualizar {{collection}} {{slug}}"
+# Para probar en la compu: npx decap-server y descomentar
+# local_backend: true
+locale: es
+publish_mode: simple
+site_url: https://maipumuebles.netlify.app
+display_url: https://maipumuebles.netlify.app
+logo_url: /logo.svg
+media_folder: img/uploads
+public_folder: /img/uploads
+
+collections:
+  - name: productos
+    label: "Productos"
+    editor: {preview: false}
+    files:
+      - name: lista
+        label: "Lista de productos"
+        file: content/productos.json
+        fields:
+          - name: items
+            label: "Productos"
+            label_singular: "producto"
+            widget: list
+            summary: "{{fields.nombre}} ({{fields.categoria}})"
+            fields:
+              - {name: nombre, label: "Nombre", widget: string}
+              - {name: categoria, label: "Categoría", widget: select, options: [{label: Living, value: living}, {label: Comedor, value: comedor}, {label: Dormitorio, value: dormitorio}, {label: Guardado, value: guardado}, {label: "Sillas y butacas", value: sillas}]}
+              - {name: fotos, label: "Fotos", widget: list, field: {name: foto, label: "Foto", widget: image}}
+              - {name: precio, label: "Precio (vacío = 'consultar')", widget: string, required: false, hint: "Ej: $450.000 o dejalo vacío"}
+              - {name: medidas, label: "Medidas", widget: string, required: false}
+              - {name: material, label: "Material", widget: string, required: false}
+              - {name: descripcion, label: "Descripción corta", widget: text, required: false}
+              - {name: destacado, label: "Destacado (aparece primero)", widget: boolean, default: false, required: false}
+              - {name: publicado, label: "Publicado (visible en la web)", widget: boolean, default: true, required: false}
+
+  - name: novedades
+    label: "Novedades y ofertas"
+    editor: {preview: false}
+    files:
+      - name: lista
+        label: "Novedades y ofertas"
+        file: content/novedades.json
+        fields:
+          - name: items
+            label: "Novedades"
+            label_singular: "novedad"
+            widget: list
+            summary: "{{fields.etiqueta}}: {{fields.titulo}}"
+            fields:
+              - {name: titulo, label: "Título", widget: string}
+              - {name: etiqueta, label: "Tipo", widget: select, options: [Novedad, Oferta], default: Novedad}
+              - {name: texto, label: "Texto", widget: text, required: false}
+              - {name: foto, label: "Foto", widget: image, required: false}
+              - {name: publicado, label: "Publicado", widget: boolean, default: true, required: false}
+
+  - name: categorias
+    label: "Categorías"
+    editor: {preview: false}
+    files:
+      - name: lista
+        label: "Categorías"
+        file: content/categorias.json
+        fields:
+          - name: items
+            label: "Categorías"
+            widget: list
+            summary: "{{fields.nombre}}"
+            fields:
+              - {name: id, label: "Código (sin espacios, no cambiar)", widget: string}
+              - {name: nombre, label: "Nombre visible", widget: string}
+              - {name: foto, label: "Foto", widget: image}
+
+  - name: textos
+    label: "Textos y datos del local"
+    editor: {preview: false}
+    files:
+      - name: home
+        label: "Portada y Nosotros"
+        file: content/home.json
+        fields:
+          - {name: hero_eyebrow, label: "Línea chica de arriba", widget: string}
+          - {name: hero_titulo, label: "Titular", widget: string, hint: "Separá renglones con | y poné *entre asteriscos* el renglón en cursiva"}
+          - {name: hero_texto, label: "Texto de portada", widget: text}
+          - {name: nosotros_titulo, label: "Título Nosotros", widget: string}
+          - {name: nosotros_texto, label: "Texto Nosotros", widget: text}
+      - name: ajustes
+        label: "WhatsApp, horarios, cuotas, envío y posventa"
+        file: content/ajustes.json
+        fields:
+          - {name: whatsapp, label: "WhatsApp (formato 549381...)", widget: string}
+          - {name: telefono_visible, label: "Teléfono como se muestra", widget: string}
+          - name: horarios
+            label: "Horarios"
+            widget: list
+            summary: "{{fields.dias}}: {{fields.horas}}"
+            fields:
+              - {name: dias, label: "Días", widget: string}
+              - {name: horas, label: "Horario", widget: string}
+          - {name: cuotas, label: "Cuotas", widget: text}
+          - {name: envio, label: "Envío", widget: text}
+          - {name: posventa, label: "Posventa", widget: text}

@@ -1,0 +1,17 @@
+Fotos: Unsplash (licencia Unsplash, uso libre)
+hero.webp  https://unsplash.com/photos/1586023492125-27b2c045efd7
+cat-living.webp  https://unsplash.com/photos/1555041469-a586c61ea9bc
+cat-comedor.webp  https://unsplash.com/photos/1617806118233-18e1de247200
+cat-dormitorio.webp  https://unsplash.com/photos/1505693416388-ac5ce068fe85
+cat-guardado.webp  https://unsplash.com/photos/1595428774223-ef52624120d2
+cat-sillas.webp  https://unsplash.com/photos/1598300042247-d088f8ab3a91
+p-sofa-cuero.webp  https://unsplash.com/photos/1540574163026-643ea20ade25
+p-silla-negra.webp  https://unsplash.com/photos/1592078615290-033ee584e267
+p-mesa-redonda.webp  https://unsplash.com/photos/1533090481720-856c6e3c1fdc
+p-butaca.webp  https://unsplash.com/photos/1519947486511-46149fa0a254
+p-sofa-gris.webp  https://unsplash.com/photos/1484101403633-562f891dc89a
+p-esquinero.webp  https://unsplash.com/photos/1550581190-9c1c48d21d6c
+p-capitone.webp  https://unsplash.com/photos/1567538096630-e0c55bd6374c
+medida.webp  https://unsplash.com/photos/1616486338812-3dadae4b4ace
+local.webp  https://unsplash.com/photos/1538688525198-9b88f6f53126
+ambiente.webp  https://unsplash.com/photos/1631679706909-1844bbd07221

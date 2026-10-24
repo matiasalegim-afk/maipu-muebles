@@ -1,0 +1,67 @@
+let WA='5493816566975';
+const wa=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $=id=>document.getElementById(id);
+const get=f=>fetch(`content/${f}.json`,{cache:'no-cache'}).then(r=>r.json());
+const pic=p=>{const f=(p.fotos||[])[0];return f?(typeof f==='string'?f:f.foto):'img/local.webp'};
+// Netlify Identity: redirect invited users to /admin after login
+addEventListener('load',()=>{if(window.netlifyIdentity){netlifyIdentity.on('init',u=>{if(!u)netlifyIdentity.on('login',()=>{location.href='/admin/'})})}});
+let P=[],label={};
+async function init(){
+ const [home,aj,cats,prods,news]=await Promise.all(['home','ajustes','categorias','productos','novedades'].map(get));
+ WA=aj.whatsapp||WA;
+ $('hero-eyebrow').textContent=home.hero_eyebrow;
+ $('hero-title').innerHTML=home.hero_titulo.split('|').map(l=>{const it=/^\*.*\*$/.test(l);l=esc(l.replace(/^\*|\*$/g,''));return `<span class="line"><span>${it?`<i>${l}</i>`:l}</span></span>`}).join('');
+ $('hero-text').textContent=home.hero_texto;
+ $('nos-title').textContent=home.nosotros_titulo;$('nos-text').textContent=home.nosotros_texto;
+ ['cuotas','envio','posventa'].forEach(k=>$('t-'+k).textContent=aj[k]);
+ $('hours').innerHTML=(aj.horarios||[]).map(h=>`<div><dt>${esc(h.dias)}</dt><dd>${esc(h.horas)}</dd></div>`).join('');
+ document.querySelectorAll('a[href^="tel:"]').forEach(a=>{a.href='tel:+'+WA.replace(/^549/,'54');if(/\d/.test(a.textContent))a.textContent=aj.telefono_visible||a.textContent});
+ cats.items.forEach(c=>label[c.id]=c.nombre);
+ $('cats').innerHTML=cats.items.map((c,n)=>`<a href="#catalogo" data-filter="${esc(c.id)}" class="cat${n?'':' cat--lg'}"><div class="mask"><img loading="lazy" src="${esc(c.foto)}" alt="${esc(c.nombre)}" width="1100" height="733"></div><span class="cat__n">${String(n+1).padStart(2,'0')}</span><h3>${esc(c.nombre)}</h3></a>`).join('');
+ P=prods.items.filter(p=>p.publicado!==false).sort((a,b)=>(b.destacado?1:0)-(a.destacado?1:0));
+ const used=cats.items.filter(c=>P.some(p=>p.categoria===c.id));
+ $('filters').innerHTML=`<button class="chip is-on" data-f="todos">Todo</button>`+used.map(c=>`<button class="chip" data-f="${esc(c.id)}">${esc(c.nombre)}</button>`).join('');
+ $('grid').innerHTML=P.map((p,i)=>`<button class="card" data-c="${esc(p.categoria)}" data-i="${i}"><div class="mask"><img loading="lazy" src="${esc(pic(p))}" alt="${esc(p.nombre)}" width="1100" height="1375"></div><div class="card__meta"><div><h3>${esc(p.nombre)}</h3><p>${esc(label[p.categoria]||'')}${p.precio?' · '+esc(p.precio):''}</p></div><span class="card__go">Ver ficha</span></div></button>`).join('');
+ const N=news.items.filter(n=>n.publicado!==false);
+ if(!N.length)$('novedades').hidden=true;
+ $('news').innerHTML=N.map(n=>`<article class="news__item reveal">${n.foto?`<img loading="lazy" src="${esc(n.foto)}" alt="">`:''}<div><span class="tag${/oferta/i.test(n.etiqueta)?' tag--oferta':''}">${esc(n.etiqueta||'Novedad')}</span><h3>${esc(n.titulo)}</h3><p>${esc(n.texto)}</p></div></article>`).join('');
+ document.querySelectorAll('[data-wa]').forEach(a=>{a.href=wa(a.dataset.wa);a.target='_blank';a.rel='noopener'});
+ const g=$('grid'),sheet=$('sheet');
+ g.addEventListener('click',e=>{const b=e.target.closest('.card');if(!b)return;const p=P[b.dataset.i];
+  $('sheet-img').src=pic(p);$('sheet-img').alt=p.nombre;$('sheet-cat').textContent=label[p.categoria]||'';$('sheet-title').textContent=p.nombre;$('sheet-desc').textContent=p.descripcion||'';
+  $('sheet-specs').innerHTML=[['Medidas',p.medidas],['Material',p.material]].filter(x=>x[1]).map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('');
+  $('sheet-price').textContent=p.precio||'consultar';
+  $('sheet-wa').href=wa(`Hola Maipú Muebles, quería consultar precio y stock de: ${p.nombre}`);sheet.showModal();});
+ sheet.addEventListener('click',e=>{if(e.target===sheet||e.target.hasAttribute('data-close'))sheet.close()});
+ const filt=f=>{document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('is-on',c.dataset.f===f));g.querySelectorAll('.card').forEach(c=>c.classList.toggle('is-out',f!=='todos'&&c.dataset.c!==f));window.ScrollTrigger&&ScrollTrigger.refresh()};
+ document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>filt(c.dataset.f));
+ document.querySelectorAll('[data-filter]').forEach(a=>a.addEventListener('click',()=>{const f=a.dataset.filter;filt(document.querySelector(`.chip[data-f="${f}"]`)?f:'todos')}));
+}
+function motion(){
+ if(!window.gsap||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ gsap.registerPlugin(ScrollTrigger);
+ if(window.Lenis){const l=new Lenis({lerp:.1});l.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>l.raf(t*1000));gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=a.getAttribute('href');if(t.length>1&&document.querySelector(t)){e.preventDefault();l.scrollTo(t,{offset:-60})}}));}
+ const E='expo.out';
+ gsap.from('.hero .line>span',{yPercent:110,duration:1.3,ease:E,stagger:.09,delay:.1});
+ gsap.from('.hero__media .mask',{clipPath:'inset(100% 0 0 0)',duration:1.5,ease:E,delay:.2});
+ gsap.from('.hero__media img',{scale:1.2,duration:2,ease:E,delay:.2});
+ gsap.from('.hero .reveal',{y:24,opacity:0,duration:1,ease:E,stagger:.1,delay:.6});
+ gsap.utils.toArray('.parallax').forEach(i=>gsap.fromTo(i,{yPercent:-8},{yPercent:0,ease:'none',scrollTrigger:{trigger:i.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
+ gsap.utils.toArray('.split').forEach(h=>{gsap.from(h,{y:40,opacity:0,duration:1.2,ease:E,scrollTrigger:{trigger:h,start:'top 88%'}})});
+ gsap.utils.toArray('.section .reveal').forEach(r=>gsap.from(r,{y:32,opacity:0,duration:1,ease:E,scrollTrigger:{trigger:r,start:'top 90%'}}));
+ gsap.utils.toArray('.cat .mask, .card .mask, .medida__media').forEach(m=>gsap.from(m,{clipPath:'inset(0 0 100% 0)',duration:1.3,ease:E,scrollTrigger:{trigger:m,start:'top 92%'}}));
+ gsap.utils.toArray('.cta__bars i').forEach((b,i)=>gsap.from(b,{scaleY:0,transformOrigin:'top',duration:1.4,ease:E,delay:i*.12,scrollTrigger:{trigger:'.cta',start:'top 75%'}}));
+
+}
+// nav
+const nav=document.getElementById('nav');let ly=0;
+addEventListener('scroll',()=>{const y=scrollY;nav.classList.toggle('is-solid',y>40);nav.classList.toggle('is-hidden',y>ly&&y>500);ly=y},{passive:true});
+// map
+addEventListener('load',()=>{if(!window.L)return;const c=[-26.825267,-65.206527];const m=L.map('map',{scrollWheelZoom:false,zoomControl:false}).setView(c,16);
+ L.control.zoom({position:'bottomright'}).addTo(m);
+ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(m);
+ L.marker(c,{icon:L.divIcon({className:'',html:'<div class="pin"><i></i><i></i><i></i></div>',iconSize:[44,44],iconAnchor:[22,44]}),alt:'Maipú Muebles',keyboard:false}).addTo(m).bindPopup('<b>Maipú Muebles</b><br>Maipú 384');});
+
+init().catch(e=>console.warn('content',e)).finally(motion);
