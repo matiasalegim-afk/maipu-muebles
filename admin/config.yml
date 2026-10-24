@@ -32,7 +32,8 @@ collections:
               - {name: nombre, label: "Nombre", widget: string}
               - {name: categoria, label: "Categoría", widget: select, options: [{label: Living, value: living}, {label: Comedor, value: comedor}, {label: Dormitorio, value: dormitorio}, {label: Guardado, value: guardado}, {label: "Sillas y butacas", value: sillas}]}
               - {name: fotos, label: "Fotos", widget: list, field: {name: foto, label: "Foto", widget: image}}
-              - {name: precio, label: "Precio (vacío = 'consultar')", widget: string, required: false, hint: "Ej: $450.000 o dejalo vacío"}
+              - {name: precio, label: "Precio (opcional)", widget: string, required: false, hint: "Ej: 250000 o $ 250.000. Vacío = se muestra Consultar precio"}
+              - {name: precio_anterior, label: "Precio anterior (opcional, para ofertas)", widget: string, required: false, hint: "Se muestra tachado si es mayor al precio"}
               - {name: medidas, label: "Medidas", widget: string, required: false}
               - {name: material, label: "Material", widget: string, required: false}
               - {name: descripcion, label: "Descripción corta", widget: text, required: false}

@@ -1,4 +1,6 @@
 let WA='5493816566975';
+const ars=v=>{if(v==null||v==='')return '';const n=Number(String(v).replace(/[^\d,]/g,'').replace(',','.'));return n>0?'$ '+Math.round(n).toLocaleString('es-AR'):String(v)};
+const priceHTML=p=>{const a=ars(p.precio),o=ars(p.precio_anterior);return a?`${o&&o!==a?`<s class="price__old">${o}</s> `:''}<span class="price__now">${a}</span>`:'<span class="price__ask">Consultar precio</span>'};
 const wa=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const $=id=>document.getElementById(id);
@@ -22,7 +24,7 @@ async function init(){
  P=prods.items.filter(p=>p.publicado!==false).sort((a,b)=>(b.destacado?1:0)-(a.destacado?1:0));
  const used=cats.items.filter(c=>P.some(p=>p.categoria===c.id));
  $('filters').innerHTML=`<button class="chip is-on" data-f="todos">Todo</button>`+used.map(c=>`<button class="chip" data-f="${esc(c.id)}">${esc(c.nombre)}</button>`).join('');
- $('grid').innerHTML=P.map((p,i)=>`<button class="card" data-c="${esc(p.categoria)}" data-i="${i}"><div class="mask"><img loading="lazy" src="${esc(pic(p))}" alt="${esc(p.nombre)}" width="1100" height="1375"></div><div class="card__meta"><div><h3>${esc(p.nombre)}</h3><p>${esc(label[p.categoria]||'')}${p.precio?' · '+esc(p.precio):''}</p></div><span class="card__go">Ver ficha</span></div></button>`).join('');
+ $('grid').innerHTML=P.map((p,i)=>`<button class="card" data-c="${esc(p.categoria)}" data-i="${i}"><div class="mask"><img loading="lazy" src="${esc(pic(p))}" alt="${esc(p.nombre)}" width="1100" height="1375"></div><div class="card__meta"><div><h3>${esc(p.nombre)}</h3><p>${esc(label[p.categoria]||'')}</p><p class="price">${priceHTML(p)}</p></div><span class="card__go">Ver ficha</span></div></button>`).join('');
  const N=news.items.filter(n=>n.publicado!==false);
  if(!N.length)$('novedades').hidden=true;
  $('news').innerHTML=N.map(n=>`<article class="news__item reveal">${n.foto?`<img loading="lazy" src="${esc(n.foto)}" alt="">`:''}<div><span class="tag${/oferta/i.test(n.etiqueta)?' tag--oferta':''}">${esc(n.etiqueta||'Novedad')}</span><h3>${esc(n.titulo)}</h3><p>${esc(n.texto)}</p></div></article>`).join('');
@@ -31,8 +33,8 @@ async function init(){
  g.addEventListener('click',e=>{const b=e.target.closest('.card');if(!b)return;const p=P[b.dataset.i];
   $('sheet-img').src=pic(p);$('sheet-img').alt=p.nombre;$('sheet-cat').textContent=label[p.categoria]||'';$('sheet-title').textContent=p.nombre;$('sheet-desc').textContent=p.descripcion||'';
   $('sheet-specs').innerHTML=[['Medidas',p.medidas],['Material',p.material]].filter(x=>x[1]).map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('');
-  $('sheet-price').textContent=p.precio||'consultar';
-  $('sheet-wa').href=wa(`Hola Maipú Muebles, quería consultar precio y stock de: ${p.nombre}`);sheet.showModal();});
+  $('sheet-price').innerHTML=priceHTML(p);
+  $('sheet-wa').textContent=ars(p.precio)?'Consultar por WhatsApp':'Consultar precio por WhatsApp';$('sheet-wa').href=wa(ars(p.precio)?`Hola Maipú Muebles, quería consultar stock y cuotas de: ${p.nombre} (${ars(p.precio)})`:`Hola Maipú Muebles, quería consultar precio y stock de: ${p.nombre}`);sheet.showModal();});
  sheet.addEventListener('click',e=>{if(e.target===sheet||e.target.hasAttribute('data-close'))sheet.close()});
  const filt=f=>{document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('is-on',c.dataset.f===f));g.querySelectorAll('.card').forEach(c=>c.classList.toggle('is-out',f!=='todos'&&c.dataset.c!==f));window.ScrollTrigger&&ScrollTrigger.refresh()};
  document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>filt(c.dataset.f));
