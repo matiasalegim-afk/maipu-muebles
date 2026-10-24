@@ -65,3 +65,5 @@ addEventListener('load',()=>{if(!window.L)return;const c=[-26.825267,-65.206527]
  L.marker(c,{icon:L.divIcon({className:'',html:'<div class="pin"><i></i><i></i><i></i></div>',iconSize:[44,44],iconAnchor:[22,44]}),alt:'Maipú Muebles',keyboard:false}).addTo(m).bindPopup('<b>Maipú Muebles</b><br>Maipú 384');});
 
 init().catch(e=>console.warn('content',e)).finally(motion);
+
+(()=>{const n=document.getElementById('nav'),b=document.getElementById('burger');if(!b)return;const set=o=>{n.classList.toggle('is-open',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');document.documentElement.style.overflow=o?'hidden':''};b.addEventListener('click',()=>set(!n.classList.contains('is-open')));n.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>set(false)));addEventListener('keydown',e=>e.key==='Escape'&&set(false))})();
