@@ -1,17 +1,24 @@
 {
   "items": [
     {
-      "titulo": "Llegaron sillones nuevos",
-      "texto": "Nuevos modelos de living en tela antimanchas. Vení a probarlos al local.",
-      "foto": "img/ambiente.webp",
+      "titulo": "Mesas de luz en oferta especial",
+      "texto": "Cuatro modelos desde $ 39.500. Vení a verlos al local.",
+      "foto": "img/productos/post_16_a.webp",
+      "etiqueta": "Oferta",
+      "publicado": true
+    },
+    {
+      "titulo": "Sillones de oficina nuevos",
+      "texto": "Ecocuero blanco a $ 150.000. Llegaron pocas unidades.",
+      "foto": "img/productos/post_09.webp",
       "etiqueta": "Novedad",
       "publicado": true
     },
     {
-      "titulo": "Hasta 6 cuotas en comedores",
-      "texto": "Consultá los planes vigentes por WhatsApp.",
-      "foto": "img/cat-comedor.webp",
-      "etiqueta": "Oferta",
+      "titulo": "Reingresó el maquillador Hollywood",
+      "texto": "Espejo con luces y 9 cajones, $ 196.000.",
+      "foto": "img/productos/post_15.webp",
+      "etiqueta": "Novedad",
       "publicado": true
     }
   ]

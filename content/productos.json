@@ -1,105 +1,249 @@
 {
   "items": [
     {
-      "nombre": "Sofá Siena 3 cuerpos",
-      "categoria": "living",
-      "precio": "",
-      "medidas": "210 × 90 × 85 cm",
-      "material": "Cuero ecológico, madera",
-      "descripcion": "Tapizado en cuero ecológico color suela, patas de madera maciza. Asiento profundo para usar todos los días.",
+      "nombre": "Mesas de luz",
+      "categoria": "dormitorio",
+      "precio": "41800",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Melamina",
+      "descripcion": "Varios modelos: Pack, Zero, Milenial y Milenial Express. También en otros colores. Incluye costo de armado. Precio desde $ 41.800.",
       "fotos": [
-        "img/p-sofa-cuero.webp"
+        "img/productos/post_01_a.webp",
+        "img/productos/post_01_b.webp",
+        "img/productos/post_01_c.webp",
+        "img/productos/post_01_d.webp",
+        "img/productos/post_01_e.webp"
       ],
       "destacado": true,
       "publicado": true
     },
     {
-      "nombre": "Esquinero Bruno",
-      "categoria": "living",
-      "precio": "",
-      "medidas": "260 × 160 cm",
-      "material": "Tela antimanchas",
-      "descripcion": "Sillón esquinero en tela antimanchas gris grafito. Ideal para livings familiares.",
-      "fotos": [
-        "img/p-esquinero.webp"
-      ],
-      "destacado": true,
-      "publicado": true
-    },
-    {
-      "nombre": "Butaca Capitoné",
-      "categoria": "living",
-      "precio": "",
-      "medidas": "70 × 75 × 95 cm",
-      "material": "Pana, madera laqueada",
-      "descripcion": "Butaca tapizada con respaldo capitoné y patas torneadas laqueadas.",
-      "fotos": [
-        "img/p-capitone.webp"
-      ],
-      "destacado": true,
-      "publicado": true
-    },
-    {
-      "nombre": "Sofá Nórdico 2 cuerpos",
-      "categoria": "living",
-      "precio": "",
-      "medidas": "170 × 85 × 80 cm",
-      "material": "Tela lino, paraíso",
-      "descripcion": "Líneas simples, tela gris perla y patas cónicas. Entra en livings chicos.",
-      "fotos": [
-        "img/p-sofa-gris.webp"
-      ],
-      "destacado": true,
-      "publicado": true
-    },
-    {
-      "nombre": "Juego Tulip redondo",
-      "categoria": "comedor",
-      "precio": "",
-      "medidas": "Mesa Ø 90 cm + 4 sillas",
-      "material": "Madera",
-      "descripcion": "Mesa redonda blanca con 4 sillas tipo Eames. Para cocina-comedor.",
-      "fotos": [
-        "img/p-mesa-redonda.webp"
-      ],
-      "destacado": false,
-      "publicado": true
-    },
-    {
-      "nombre": "Silla Oslo",
-      "categoria": "sillas",
-      "precio": "",
-      "medidas": "Altura 82 cm",
-      "material": "Ecocuero, haya",
-      "descripcion": "Asiento tapizado negro y patas de madera natural. Se vende por unidad.",
-      "fotos": [
-        "img/p-silla-negra.webp"
-      ],
-      "destacado": false,
-      "publicado": true
-    },
-    {
-      "nombre": "Butaca Concha",
-      "categoria": "sillas",
-      "precio": "",
-      "medidas": "70 × 75 × 70 cm",
-      "material": "Tapizado, madera",
-      "descripcion": "Asiento curvo blanco sobre patas de madera. Para el rincón de lectura.",
-      "fotos": [
-        "img/p-butaca.webp"
-      ],
-      "destacado": false,
-      "publicado": true
-    },
-    {
-      "nombre": "Juego de dormitorio Alba",
+      "nombre": "Mesas de luz · oferta especial",
       "categoria": "dormitorio",
       "precio": "",
-      "medidas": "2 plazas / Queen",
-      "material": "Pana",
-      "descripcion": "Respaldo tapizado capitoné, mesas de luz y banqueta pie de cama.",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Melamina",
+      "descripcion": "Oferta especial en cuatro modelos: $ 39.500, $ 43.100, $ 54.500 y $ 76.800.",
       "fotos": [
-        "img/cat-dormitorio.webp"
+        "img/productos/post_16_a.webp",
+        "img/productos/post_16_b.webp"
+      ],
+      "destacado": true,
+      "publicado": true
+    },
+    {
+      "nombre": "Cuna + colchón",
+      "categoria": "dormitorio",
+      "precio": "190000",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "",
+      "descripcion": "Cuna con colchón incluido.",
+      "fotos": [
+        "img/productos/post_13_b.webp"
+      ],
+      "destacado": false,
+      "publicado": true
+    },
+    {
+      "nombre": "Maquillador Hollywood",
+      "categoria": "dormitorio",
+      "precio": "196000",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Melamina",
+      "descripcion": "Espejo con luces y 9 cajones. Reingreso: llegaron pocas unidades.",
+      "fotos": [
+        "img/productos/post_15.webp"
+      ],
+      "destacado": true,
+      "publicado": true
+    },
+    {
+      "nombre": "Almohada cervical",
+      "categoria": "dormitorio",
+      "precio": "",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "",
+      "descripcion": "Además de muebles tenemos colchones, sommiers y almohadas. Consultanos.",
+      "fotos": [
+        "img/productos/post_12.webp"
+      ],
+      "destacado": false,
+      "publicado": true
+    },
+    {
+      "nombre": "Placares",
+      "categoria": "guardado",
+      "precio": "109800",
+      "precio_anterior": "",
+      "medidas": "57 × 46 × 181 cm (2 puertas)",
+      "material": "Melamina blanca",
+      "descripcion": "Modelos de 2, 3, 4 y 6 puertas con cajones: $ 109.800, $ 158.700, $ 187.200 y $ 266.500. Incluye costo de armado. Varios colores.",
+      "fotos": [
+        "img/productos/post_03_a.webp",
+        "img/productos/post_03_b.webp",
+        "img/productos/post_03_c.webp",
+        "img/productos/post_03_d.webp",
+        "img/productos/post_03_e.webp"
+      ],
+      "destacado": true,
+      "publicado": true
+    },
+    {
+      "nombre": "Despenseros",
+      "categoria": "guardado",
+      "precio": "102500",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Melamina blanca",
+      "descripcion": "Modelos de 2 y 4 puertas o puerta, cajón y estantes: desde $ 102.500.",
+      "fotos": [
+        "img/productos/post_11_a.webp",
+        "img/productos/post_11_b.webp",
+        "img/productos/post_11_c.webp",
+        "img/productos/post_11_d.webp",
+        "img/productos/post_06.webp"
+      ],
+      "destacado": false,
+      "publicado": true
+    },
+    {
+      "nombre": "Organizador con canasto",
+      "categoria": "guardado",
+      "precio": "63200",
+      "precio_anterior": "",
+      "medidas": "40 × 30 × 90 cm",
+      "material": "Madera y canastos de mimbre",
+      "descripcion": "Para guardar verduras y frutas. Oferta del día.",
+      "fotos": [
+        "img/productos/post_23.webp"
+      ],
+      "destacado": true,
+      "publicado": true
+    },
+    {
+      "nombre": "Escritorios",
+      "categoria": "escritorios",
+      "precio": "73400",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Melamina",
+      "descripcion": "Varios modelos: Base, CS, Gamer, 2 cajones, Dakar, Roma, Classic y para PC. Consultanos por medidas y colores.",
+      "fotos": [
+        "img/productos/post_02_a.webp",
+        "img/productos/post_02_b.webp",
+        "img/productos/post_02_c.webp",
+        "img/productos/post_02_d.webp",
+        "img/productos/post_02_e.webp",
+        "img/productos/post_02_f.webp",
+        "img/productos/post_18_b.webp",
+        "img/productos/post_18_c.webp",
+        "img/productos/post_18_d.webp",
+        "img/productos/post_18_e.webp"
+      ],
+      "destacado": true,
+      "publicado": true
+    },
+    {
+      "nombre": "Escritorio Classic Bamboo",
+      "categoria": "escritorios",
+      "precio": "131900",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Melamina madera clara y blanco",
+      "descripcion": "Con cajonera de dos cajones.",
+      "fotos": [
+        "img/productos/post_18_a.webp",
+        "img/productos/post_02_e.webp"
+      ],
+      "destacado": false,
+      "publicado": true
+    },
+    {
+      "nombre": "Escritorio Orlandi",
+      "categoria": "escritorios",
+      "precio": "73400",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Melamina blanca",
+      "descripcion": "",
+      "fotos": [
+        "img/productos/post_05.webp"
+      ],
+      "destacado": false,
+      "publicado": true
+    },
+    {
+      "nombre": "Sillón de oficina",
+      "categoria": "escritorios",
+      "precio": "150000",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Ecocuero blanco",
+      "descripcion": "Llegaron pocas unidades.",
+      "fotos": [
+        "img/productos/post_09.webp"
+      ],
+      "destacado": true,
+      "publicado": true
+    },
+    {
+      "nombre": "Kit de cocina",
+      "categoria": "cocina",
+      "precio": "144300",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Melamina madera y blanco",
+      "descripcion": "Alacena + bajomesada. Consultanos por otros modelos.",
+      "fotos": [
+        "img/productos/post_10.webp"
+      ],
+      "destacado": true,
+      "publicado": true
+    },
+    {
+      "nombre": "Cocina completa",
+      "categoria": "cocina",
+      "precio": "",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Melamina blanca",
+      "descripcion": "Alacena, bajomesada, bacha y porta microondas o aparador de cocina. Consultá precio.",
+      "fotos": [
+        "img/productos/post_07.webp",
+        "img/productos/post_08.webp"
+      ],
+      "destacado": false,
+      "publicado": true
+    },
+    {
+      "nombre": "Rack de TV",
+      "categoria": "living",
+      "precio": "180400",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Madera clara",
+      "descripcion": "Puertas con listones. Última unidad.",
+      "fotos": [
+        "img/productos/post_19.webp"
+      ],
+      "destacado": true,
+      "publicado": true
+    },
+    {
+      "nombre": "Bahiut Doors",
+      "categoria": "living",
+      "precio": "",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Madera y blanco",
+      "descripcion": "Bahiut / rack con puertas.",
+      "fotos": [
+        "img/productos/post_04.webp"
       ],
       "destacado": false,
       "publicado": true

@@ -198,3 +198,5 @@ address{font:300 28px/1.3 var(--serif);font-style:normal;margin:40px 0 32px}
 .price__old{font-family:var(--sans);font-size:13px;color:var(--stone);text-decoration:line-through}
 .price__ask{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--walnut);letter-spacing:.02em}
 .sheet__price.price{font-size:26px;margin:20px 0}
+.sheet__media{position:relative}.thumbs{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}.thumbs button{flex:0 0 56px;height:70px;border:1px solid transparent;padding:0;background:none;cursor:pointer;opacity:.55;transition:opacity .3s}.thumbs button.on{opacity:1;border-color:var(--ink)}.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.sheet__media{aspect-ratio:auto;padding:12px}.sheet__media>img{width:100%;height:auto;max-height:62vh;object-fit:contain;display:block;margin:0 auto}

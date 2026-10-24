@@ -31,7 +31,7 @@ async function init(){
  document.querySelectorAll('[data-wa]').forEach(a=>{a.href=wa(a.dataset.wa);a.target='_blank';a.rel='noopener'});
  const g=$('grid'),sheet=$('sheet');
  g.addEventListener('click',e=>{const b=e.target.closest('.card');if(!b)return;const p=P[b.dataset.i];
-  $('sheet-img').src=pic(p);$('sheet-img').alt=p.nombre;$('sheet-cat').textContent=label[p.categoria]||'';$('sheet-title').textContent=p.nombre;$('sheet-desc').textContent=p.descripcion||'';
+  $('sheet-img').src=pic(p);{const F=(p.fotos||[]).map(f=>typeof f==='string'?f:f.foto);$('sheet-thumbs').innerHTML=F.length>1?F.map((f,k)=>`<button type="button" aria-label="Foto ${k+1}" class="${k?'':'on'}" data-src="${esc(f)}"><img src="${esc(f)}" alt="" loading="lazy"></button>`).join(''):'';}$('sheet-img').alt=p.nombre;$('sheet-cat').textContent=label[p.categoria]||'';$('sheet-title').textContent=p.nombre;$('sheet-desc').textContent=p.descripcion||'';
   $('sheet-specs').innerHTML=[['Medidas',p.medidas],['Material',p.material]].filter(x=>x[1]).map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('');
   $('sheet-price').innerHTML=priceHTML(p);
   $('sheet-wa').textContent=ars(p.precio)?'Consultar por WhatsApp':'Consultar precio por WhatsApp';$('sheet-wa').href=wa(ars(p.precio)?`Hola Maipú Muebles, quería consultar stock y cuotas de: ${p.nombre} (${ars(p.precio)})`:`Hola Maipú Muebles, quería consultar precio y stock de: ${p.nombre}`);sheet.showModal();});
@@ -69,3 +69,5 @@ addEventListener('load',()=>{if(!window.L)return;const c=[-26.825267,-65.206527]
 init().catch(e=>console.warn('content',e)).finally(motion);
 
 (()=>{const n=document.getElementById('nav'),b=document.getElementById('burger');if(!b)return;const set=o=>{n.classList.toggle('is-open',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');document.documentElement.style.overflow=o?'hidden':''};b.addEventListener('click',()=>set(!n.classList.contains('is-open')));n.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>set(false)));addEventListener('keydown',e=>e.key==='Escape'&&set(false))})();
+
+document.getElementById('sheet-thumbs')?.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.getElementById('sheet-img').src=b.dataset.src;b.parentNode.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b))});

@@ -1,19 +1,9 @@
 {
   "items": [
     {
-      "id": "living",
-      "nombre": "Living",
-      "foto": "img/cat-living.webp"
-    },
-    {
-      "id": "comedor",
-      "nombre": "Comedor",
-      "foto": "img/cat-comedor.webp"
-    },
-    {
       "id": "dormitorio",
       "nombre": "Dormitorio",
-      "foto": "img/cat-dormitorio.webp"
+      "foto": "img/amb-descanso.webp"
     },
     {
       "id": "guardado",
@@ -21,9 +11,19 @@
       "foto": "img/cat-guardado.webp"
     },
     {
-      "id": "sillas",
-      "nombre": "Sillas y butacas",
-      "foto": "img/cat-sillas.webp"
+      "id": "escritorios",
+      "nombre": "Escritorios y oficina",
+      "foto": "img/cat-escritorios.webp"
+    },
+    {
+      "id": "cocina",
+      "nombre": "Cocina",
+      "foto": "img/cat-cocina.webp"
+    },
+    {
+      "id": "living",
+      "nombre": "Living",
+      "foto": "img/cat-living.webp"
     }
   ]
 }
