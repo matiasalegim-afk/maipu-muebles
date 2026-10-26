@@ -225,27 +225,22 @@
       ],
       "precio": "80500",
       "medidas": "61x45x38",
-      "material": "Melamina"
+      "material": "Melamina",
+      "precio_anterior": ""
     },
     {
       "destacado": false,
-      "publicado": true
-    },
-    {
-      "destacado": false,
-      "publicado": true
-    },
-    {
-      "destacado": false,
-      "publicado": true
-    },
-    {
-      "destacado": false,
-      "publicado": true
-    },
-    {
-      "destacado": false,
-      "publicado": true
+      "publicado": true,
+      "nombre": "Mesa de luz Pack",
+      "fotos": [
+        "/img/uploads/mesa-de-luz-pack-mvpd64o6paq.jpg",
+        "/img/uploads/mesa-de-luz-pack-mvpd8gjeq44.jpg"
+      ],
+      "precio": "42800",
+      "medidas": "56x38x37",
+      "material": "Melamina - MDF",
+      "descripcion": "Disponible en colores varios",
+      "precio_anterior": ""
     }
   ]
 }
