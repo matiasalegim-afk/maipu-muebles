@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "BICHUKI",
+      "categoria": "guardado",
+      "fotos": [
+        "/img/uploads/bichuki-mvpff2qgcjn.webp"
+      ],
+      "precio": "111111111",
+      "precio_anterior": "NIO",
+      "medidas": "11111",
+      "material": "",
+      "descripcion": "si se puede",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-10-26"
+    },
+    {
       "nombre": "chibuki",
       "categoria": "dormitorio",
       "fotos": [
