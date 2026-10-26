@@ -1,6 +1,6 @@
-// Panel Maipú: login con Google (ID token) + guardado en GitHub con UN commit por guardado.
-// Variables en Cloudflare Pages: GOOGLE_CLIENT_ID, GITHUB_TOKEN (secreto), SESSION_SECRET (secreto),
-// opcionales ADMIN_EMAILS (coma), REPO, BRANCH.
+// Panel Maipú: login con código por mail (6 dígitos) + guardado en GitHub con UN commit por guardado.
+// Variables en Cloudflare Pages: BREVO_API_KEY (secreto; o RESEND_API_KEY), MAIL_FROM, GITHUB_TOKEN (secreto), SESSION_SECRET (secreto),
+// opcionales MAIL_FROM_NAME, ADMIN_EMAILS (coma), REPO, BRANCH, binding KV LOGIN_KV.
 export const REPO = (env) => env.REPO || 'matiasalegim-afk/maipu-muebles';
 export const BRANCH = (env) => env.BRANCH || 'main';
 export const emails = (env) => (env.ADMIN_EMAILS || 'matiasalegim@gmail.com,sofiachahla17@gmail.com').toLowerCase().split(',').map((s) => s.trim()).filter(Boolean);
@@ -9,25 +9,72 @@ const enc = new TextEncoder();
 const b64u = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 const unb64u = (s) => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/') + '==='.slice((s.length + 3) % 4)), (c) => c.charCodeAt(0));
 
-let certs = null, certsAt = 0;
-export async function verifyGoogle(token, env, now = Date.now(), fetchCerts) {
-  const [h, p, s] = String(token).split('.');
-  if (!s) throw new Error('token inválido');
-  const head = JSON.parse(new TextDecoder().decode(unb64u(h)));
-  const pl = JSON.parse(new TextDecoder().decode(unb64u(p)));
-  if (!fetchCerts && (!certs || now - certsAt > 3600e3)) { certs = (await (await fetch('https://www.googleapis.com/oauth2/v3/certs')).json()).keys; certsAt = now; }
-  const keys = fetchCerts ? await fetchCerts() : certs;
-  const jwk = keys.find((k) => k.kid === head.kid);
-  if (!jwk || head.alg !== 'RS256') throw new Error('clave desconocida');
-  const key = await crypto.subtle.importKey('jwk', jwk, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['verify']);
-  if (!(await crypto.subtle.verify('RSASSA-PKCS1-v1_5', key, unb64u(s), enc.encode(`${h}.${p}`)))) throw new Error('firma inválida');
-  if (!['accounts.google.com', 'https://accounts.google.com'].includes(pl.iss)) throw new Error('emisor inválido');
-  if (pl.aud !== env.GOOGLE_CLIENT_ID) throw new Error('cliente inválido');
-  if (pl.exp * 1000 < now) throw new Error('token vencido');
-  if (!pl.email_verified) throw new Error('mail sin verificar');
-  const email = String(pl.email).toLowerCase();
-  if (!emails(env).includes(email)) throw new Error(`La cuenta ${email} no tiene permiso`);
-  return { email, name: pl.name || email };
+// ---------- login con código por mail ----------
+export const isAllowed = (env, email) => emails(env).includes(String(email || '').trim().toLowerCase());
+const CODE_TTL = 10 * 60e3, MAX_TRIES = 5, RESEND_GAP = 60e3, MAX_SENDS_HOUR = 5;
+
+/** Almacén chico con vencimiento: KV (binding LOGIN_KV) si existe; si no, Cache API de Cloudflare. */
+export function store(env) {
+  if (env.LOGIN_KV) return {
+    get: async (k) => { const v = await env.LOGIN_KV.get(k); return v ? JSON.parse(v) : null; },
+    put: (k, v, ttlS) => env.LOGIN_KV.put(k, JSON.stringify(v), { expirationTtl: Math.max(60, Math.ceil(ttlS)) }),
+  };
+  const url = (k) => `https://mm-login.internal/${encodeURIComponent(k)}`;
+  return {
+    get: async (k) => { const r = await caches.default.match(url(k)); return r ? r.json() : null; },
+    put: (k, v, ttlS) => caches.default.put(url(k), new Response(JSON.stringify(v), { headers: { 'cache-control': `max-age=${Math.max(1, Math.ceil(ttlS))}` } })),
+  };
+}
+const rnd = () => b64u(crypto.getRandomValues(new Uint8Array(12)));
+export const newCode = () => String(crypto.getRandomValues(new Uint32Array(1))[0] % 1e6).padStart(6, '0');
+
+/** Paso 1: valida mail, limita envíos, genera código y devuelve {challenge, code}. El código se manda por mail, nunca al navegador. */
+export async function startLogin(env, email, st = store(env), now = Date.now(), code = newCode()) {
+  email = String(email || '').trim().toLowerCase();
+  if (!isAllowed(env, email)) { const e = new Error('Ese mail no tiene permiso para entrar al panel.'); e.status = 403; throw e; }
+  const rk = `rate:${email}`;
+  const r = (await st.get(rk)) || { sends: [] };
+  r.sends = r.sends.filter((t) => now - t < 3600e3);
+  if (r.sends.length && now - r.sends.at(-1) < RESEND_GAP) { const e = new Error('Ya te mandamos un código. Esperá un minuto para pedir otro.'); e.status = 429; throw e; }
+  if (r.sends.length >= MAX_SENDS_HOUR) { const e = new Error('Pediste muchos códigos. Probá de nuevo en una hora.'); e.status = 429; throw e; }
+  r.sends.push(now); await st.put(rk, r, 3600);
+  const n = rnd(), body = b64u(enc.encode(JSON.stringify({ email, n, exp: now + CODE_TTL })));
+  const challenge = `${body}.${await hmac(env, `${body}.${code}`)}`;
+  await st.put(`ch:${n}`, { tries: 0 }, CODE_TTL / 1e3);
+  return { challenge, code, email };
+}
+/** Paso 2: verifica el código (máx 5 intentos, 10 min, un solo uso). */
+export async function finishLogin(env, challenge, code, st = store(env), now = Date.now()) {
+  const fail = (m, status = 403) => Object.assign(new Error(m), { status });
+  const [body, sig] = String(challenge || '').split('.');
+  if (!sig) throw fail('Pedí un código nuevo.');
+  let c; try { c = JSON.parse(new TextDecoder().decode(unb64u(body))); } catch { throw fail('Pedí un código nuevo.'); }
+  if (c.exp < now) throw fail('El código venció. Pedí uno nuevo.');
+  const k = `ch:${c.n}`, s = await st.get(k);
+  if (!s || s.used) throw fail('Ese código ya no sirve. Pedí uno nuevo.');
+  if (s.tries >= MAX_TRIES) throw fail('Demasiados intentos. Pedí un código nuevo.', 429);
+  const ttl = (c.exp - now) / 1e3;
+  if (!/^\d{6}$/.test(String(code || '').trim()) || sig !== (await hmac(env, `${body}.${String(code).trim()}`))) {
+    await st.put(k, { tries: s.tries + 1 }, ttl);
+    throw fail(s.tries + 1 >= MAX_TRIES ? 'Demasiados intentos. Pedí un código nuevo.' : 'Código incorrecto. Revisalo y probá de nuevo.');
+  }
+  await st.put(k, { tries: s.tries, used: true }, ttl);
+  if (!isAllowed(env, c.email)) throw fail('Ese mail no tiene permiso.');
+  return { email: c.email, name: NAMES[c.email] || c.email };
+}
+const NAMES = { 'matiasalegim@gmail.com': 'Matías', 'sofiachahla17@gmail.com': 'Sofía' };
+
+/** Envía el código. Brevo (BREVO_API_KEY) o Resend (RESEND_API_KEY). Remitente: MAIL_FROM. */
+export async function sendCode(env, to, code, f = fetch) {
+  const subject = `Tu código para el panel de Maipú: ${code}`;
+  const text = `Tu código para entrar al panel de Maipú Muebles es: ${code}\n\nVence en 10 minutos. Si no lo pediste, ignorá este mail.`;
+  const html = `<div style="font-family:Arial,sans-serif;font-size:16px;color:#29384F"><p>Tu código para entrar al panel de <b>Maipú Muebles</b>:</p><p style="font-size:32px;letter-spacing:6px;font-weight:bold">${code}</p><p style="color:#667">Vence en 10 minutos. Si no lo pediste, ignorá este mail.</p></div>`;
+  const from = env.MAIL_FROM || 'matiasalegim@gmail.com', fromName = env.MAIL_FROM_NAME || 'Maipú Muebles';
+  let r;
+  if (env.BREVO_API_KEY) r = await f('https://api.brevo.com/v3/smtp/email', { method: 'POST', headers: { 'api-key': env.BREVO_API_KEY, 'content-type': 'application/json', accept: 'application/json' }, body: JSON.stringify({ sender: { email: from, name: fromName }, to: [{ email: to }], subject, textContent: text, htmlContent: html }) });
+  else if (env.RESEND_API_KEY) r = await f('https://api.resend.com/emails', { method: 'POST', headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' }, body: JSON.stringify({ from: `${fromName} <${from}>`, to: [to], subject, text, html }) });
+  else throw Object.assign(new Error('Falta configurar el envío de mails (BREVO_API_KEY).'), { status: 500 });
+  if (!r.ok) throw Object.assign(new Error(`No se pudo mandar el mail (${r.status}). Probá de nuevo en un rato.`), { status: 502, detail: (await r.text()).slice(0, 300) });
 }
 async function hmac(env, data) {
   if (!env.SESSION_SECRET) throw new Error('Falta SESSION_SECRET');

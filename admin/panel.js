@@ -1,4 +1,4 @@
-// Panel Maipú Muebles: login con Google, edición y UN commit por "Guardar y publicar".
+// Panel Maipú Muebles: login con código por mail, edición y UN commit por "Guardar y publicar".
 const RAW = 'https://raw.githubusercontent.com/matiasalegim-afk/maipu-muebles/';
 const CATS_FALLBACK = [['dormitorio', 'Dormitorio'], ['guardado', 'Guardado'], ['escritorios', 'Escritorios y oficina'], ['cocina', 'Cocina'], ['living', 'Living']];
 const $ = (s, el = document) => el.querySelector(s);
@@ -21,16 +21,26 @@ async function start() {
   let s;
   try { s = await api('/api/session'); } catch { app.innerHTML = '<div class="center"><p>No se pudo conectar. Recargá la página.</p></div>'; return; }
   if (s.user) return load(s.user);
-  app.innerHTML = `<div class="center"><div class="login"><img src="/logo.svg" alt="Maipú Muebles"><h1>Hola 👋</h1><p class="sub">Entrá con tu cuenta de Google para cargar productos, precios y fotos.</p><div id="gbtn"></div><small class="sub" id="lerr"></small></div></div>`;
-  if (!s.clientId) { $('#lerr').textContent = 'Falta configurar GOOGLE_CLIENT_ID.'; return; }
-  const go = () => {
-    google.accounts.id.initialize({ client_id: s.clientId, ux_mode: 'popup', callback: async ({ credential }) => {
-      try { const r = await api('/api/session', { method: 'POST', body: JSON.stringify({ credential }) }); load(r.user); }
-      catch (e) { $('#lerr').textContent = e.message; }
-    } });
-    google.accounts.id.renderButton($('#gbtn'), { theme: 'filled_blue', size: 'large', shape: 'pill', text: 'continue_with', locale: 'es' });
+  const saved = localStorage.getItem('mm_email') || '';
+  const step1 = (msg = '') => {
+    app.innerHTML = `<div class="center"><form class="login" id="lf"><img src="/logo.svg" alt="Maipú Muebles"><h1>Hola 👋</h1><p class="sub">Escribí tu mail y te mandamos un código para entrar.</p><input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@gmail.com" value="${esc(saved)}" required style="width:100%;font-size:18px;padding:12px;margin:8px 0;border-radius:10px;border:1px solid #ccd"><button class="btn" id="lb" style="width:100%">Mandarme el código</button><small class="sub" id="lerr">${esc(msg)}</small></form></div>`;
+    $('#lf').onsubmit = async (ev) => {
+      ev.preventDefault(); const email = $('#em').value.trim().toLowerCase(); $('#lb').disabled = true; $('#lerr').textContent = 'Enviando…';
+      try { const r = await api('/api/session', { method: 'POST', body: JSON.stringify({ email }) }); localStorage.setItem('mm_email', email); step2(r); }
+      catch (e) { $('#lerr').textContent = e.message; $('#lb').disabled = false; }
+    };
   };
-  window.google?.accounts ? go() : window.addEventListener('load', go);
+  const step2 = ({ challenge, email }) => {
+    app.innerHTML = `<div class="center"><form class="login" id="cf"><img src="/logo.svg" alt="Maipú Muebles"><h1>Revisá tu mail</h1><p class="sub">Te mandamos un código de 6 números a <b>${esc(email)}</b>. Mirá también en Spam o Promociones.</p><input id="cd" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="123456" required style="width:100%;font-size:28px;letter-spacing:8px;text-align:center;padding:12px;margin:8px 0;border-radius:10px;border:1px solid #ccd"><button class="btn" id="cb" style="width:100%">Entrar</button><small class="sub" id="lerr"></small><p><a href="#" id="back">Pedir otro código</a></p></form></div>`;
+    $('#cd').focus();
+    $('#back').onclick = (ev) => { ev.preventDefault(); step1(); };
+    $('#cf').onsubmit = async (ev) => {
+      ev.preventDefault(); $('#cb').disabled = true;
+      try { const r = await api('/api/session', { method: 'POST', body: JSON.stringify({ challenge, code: $('#cd').value.trim() }) }); load(r.user); }
+      catch (e) { $('#lerr').textContent = e.message; $('#cb').disabled = false; if (/nuevo/.test(e.message)) setTimeout(() => step1(e.message), 1800); }
+    };
+  };
+  step1();
 }
 async function load(user) {
   $('#who').innerHTML = `<span>${esc(user.name)}</span><button id="out">Salir</button>`;

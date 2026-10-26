@@ -1,26 +1,44 @@
-// node --test tests/  — prueba login Google (firma real RSA), sesión y armado del commit único.
+// node --test tests/  — prueba login por código de mail (límites, vencimiento, un solo uso), sesión y armado del commit único.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { verifyGoogle, makeSession, readSession, commitAll } from '../functions/api/_lib.js';
-const env = { GOOGLE_CLIENT_ID: 'cid.apps.googleusercontent.com', SESSION_SECRET: 'x'.repeat(32), GITHUB_TOKEN: 't' };
-const b64u = (b) => Buffer.from(b).toString('base64url');
-const kp = await crypto.subtle.generateKey({ name: 'RSASSA-PKCS1-v1_5', modulusLength: 2048, publicExponent: new Uint8Array([1, 0, 1]), hash: 'SHA-256' }, true, ['sign', 'verify']);
-const jwk = { ...(await crypto.subtle.exportKey('jwk', kp.publicKey)), kid: 'k1' };
-async function tok(p) {
-  const h = b64u(JSON.stringify({ alg: 'RS256', kid: 'k1' })), b = b64u(JSON.stringify({ iss: 'https://accounts.google.com', aud: env.GOOGLE_CLIENT_ID, exp: Date.now() / 1000 + 600, email_verified: true, ...p }));
-  return `${h}.${b}.${b64u(await crypto.subtle.sign('RSASSA-PKCS1-v1_5', kp.privateKey, new TextEncoder().encode(`${h}.${b}`)))}`;
-}
-const certs = async () => [jwk];
-test('acepta a Sofía y a Matías', async () => {
-  assert.equal((await verifyGoogle(await tok({ email: 'SofiaChahla17@gmail.com' }), env, Date.now(), certs)).email, 'sofiachahla17@gmail.com');
-  assert.equal((await verifyGoogle(await tok({ email: 'matiasalegim@gmail.com' }), env, Date.now(), certs)).email, 'matiasalegim@gmail.com');
+import { startLogin, finishLogin, sendCode, makeSession, readSession, commitAll } from '../functions/api/_lib.js';
+const env = { SESSION_SECRET: 'x'.repeat(32), GITHUB_TOKEN: 't' };
+const mem = () => { const m = new Map(); return { get: async (k) => m.get(k) ?? null, put: async (k, v) => { m.set(k, structuredClone(v)); } }; };
+test('código por mail: Sofía y Matías entran, otros no', async () => {
+  for (const mail of ['SofiaChahla17@gmail.com ', 'matiasalegim@gmail.com']) {
+    const st = mem(); const { challenge, code } = await startLogin(env, mail, st);
+    assert.match(code, /^\d{6}$/); assert.ok(!challenge.includes(code));
+    assert.equal((await finishLogin(env, challenge, code, st)).email, mail.trim().toLowerCase());
+  }
+  await assert.rejects(startLogin(env, 'otro@gmail.com', mem()), (e) => e.status === 403);
 });
-test('rechaza otros mails, otro cliente, vencido, firma falsa', async () => {
-  await assert.rejects(verifyGoogle(await tok({ email: 'otro@gmail.com' }), env, Date.now(), certs), /permiso/);
-  await assert.rejects(verifyGoogle(await tok({ email: 'matiasalegim@gmail.com', aud: 'x' }), env, Date.now(), certs), /cliente/);
-  await assert.rejects(verifyGoogle(await tok({ email: 'matiasalegim@gmail.com', exp: 1 }), env, Date.now(), certs), /vencido/);
-  const t = (await tok({ email: 'matiasalegim@gmail.com' })).split('.'); t[1] = b64u(JSON.stringify({ email: 'otro@gmail.com' }));
-  await assert.rejects(verifyGoogle(t.join('.'), env, Date.now(), certs), /firma/);
+test('código incorrecto, 5 intentos, vencido, un solo uso, challenge falso', async () => {
+  const st = mem(), t0 = Date.now(); const { challenge, code } = await startLogin(env, 'sofiachahla17@gmail.com', st, t0, '123456');
+  for (let i = 0; i < 5; i++) await assert.rejects(finishLogin(env, challenge, '000000', st, t0), /incorrecto|intentos/);
+  await assert.rejects(finishLogin(env, challenge, code, st, t0), /intentos/);
+  const st2 = mem(); const c2 = await startLogin(env, 'sofiachahla17@gmail.com', st2, t0, '654321');
+  await assert.rejects(finishLogin(env, c2.challenge, '654321', st2, t0 + 11 * 60e3), /venció/);
+  assert.ok(await finishLogin(env, c2.challenge, '654321', st2, t0));
+  await assert.rejects(finishLogin(env, c2.challenge, '654321', st2, t0), /ya no sirve/);
+  const st3 = mem(); const c3 = await startLogin(env, 'sofiachahla17@gmail.com', st3, t0, '111111');
+  const [b, sig] = c3.challenge.split('.'); const fake = Buffer.from(JSON.stringify({ ...JSON.parse(Buffer.from(b, 'base64url')), email: 'otro@gmail.com' })).toString('base64url');
+  await assert.rejects(finishLogin(env, `${fake}.${sig}`, '111111', st3, t0));
+});
+test('límite de envíos: 1 por minuto, 5 por hora', async () => {
+  const st = mem(), t = Date.now(), m = 'matiasalegim@gmail.com';
+  await startLogin(env, m, st, t);
+  await assert.rejects(startLogin(env, m, st, t + 30e3), (e) => e.status === 429);
+  for (let i = 1; i < 5; i++) await startLogin(env, m, st, t + i * 61e3);
+  await assert.rejects(startLogin(env, m, st, t + 6 * 61e3), /muchos/);
+  await startLogin(env, m, st, t + 3601e3 + 5 * 61e3);
+});
+test('envío por Brevo y por Resend', async () => {
+  const calls = []; const f = async (u, i) => { calls.push([u, i]); return new Response('{}', { status: 201 }); };
+  await sendCode({ BREVO_API_KEY: 'k', MAIL_FROM: 'a@b.com' }, 'sofiachahla17@gmail.com', '123456', f);
+  assert.match(calls[0][0], /brevo/); assert.equal(calls[0][1].headers['api-key'], 'k'); assert.match(calls[0][1].body, /123456/);
+  await sendCode({ RESEND_API_KEY: 'r' }, 'x@y.com', '123456', f); assert.match(calls[1][0], /resend/);
+  await assert.rejects(sendCode({}, 'x@y.com', '1', f), /BREVO_API_KEY/);
+  await assert.rejects(sendCode({ BREVO_API_KEY: 'k' }, 'x@y.com', '1', async () => new Response('no', { status: 401 })), /No se pudo/);
 });
 test('sesión firmada', async () => {
   const s = await makeSession(env, { email: 'sofiachahla17@gmail.com', name: 'Sofía' });
