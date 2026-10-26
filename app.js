@@ -28,7 +28,12 @@ async function init(){
  document.querySelectorAll('a[href^="tel:"]').forEach(a=>{a.href='tel:+'+WA.replace(/^549/,'54');if(/\d/.test(a.textContent))a.textContent=aj.telefono_visible||a.textContent});
  cats.items.forEach(c=>label[c.id]=c.nombre);
  $('cats').innerHTML=cats.items.map((c,n)=>`<a href="#catalogo" data-filter="${esc(c.id)}" class="cat${n?'':' cat--lg'}"><div class="mask"><img loading="lazy" decoding="async" src="${esc(th(c.foto))}"${!n&&th(c.foto)!==c.foto?` srcset="${esc(th(c.foto))} 600w, ${esc(c.foto)} 1600w" sizes="(max-width:900px) 100vw, 60vw"`:''} alt="${esc(c.nombre)}" width="1100" height="733"></div><span class="cat__n">${String(n+1).padStart(2,'0')}</span><h3>${esc(c.nombre)}</h3></a>`).join('');
- P=prods.items.filter(p=>p.publicado!==false).sort((a,b)=>(b.destacado?1:0)-(a.destacado?1:0));
+ // Orden del panel = orden de la web: lo más nuevo (o lo que Sofía sube al principio) va primero
+ P=prods.items.filter(p=>p.publicado!==false);
+ const isNew=p=>p.creado&&Date.now()-Date.parse(p.creado)<30*864e5;
+ {const F=P.filter(p=>p.destacado),R=P.filter(p=>!p.destacado);const L=(F.length>=4?F:F.concat(R.slice(0,4-F.length))).slice(0,12);
+  $('dest').innerHTML=L.map(p=>`<button class="feat" data-i="${P.indexOf(p)}"><div class="mask">${isNew(p)?'<span class="badge badge--new">Nuevo</span>':p.destacado?'<span class="badge">Destacado</span>':''}<img loading="lazy" decoding="async" src="${esc(th(pic(p)))}" alt="${esc(p.nombre)}" width="880" height="1100"></div><h3>${esc(p.nombre)}</h3><p class="price">${priceHTML(p)}</p></button>`).join('');
+  if(!L.length)$('destacados').hidden=true;}
  const used=cats.items.filter(c=>P.some(p=>p.categoria===c.id));
  $('filters').innerHTML=`<button class="chip is-on" data-f="todos">Todo</button>`+used.map(c=>`<button class="chip" data-f="${esc(c.id)}">${esc(c.nombre)}</button>`).join('');
  $('grid').innerHTML=P.map((p,i)=>`<button class="card" data-c="${esc(p.categoria)}" data-i="${i}"><div class="mask"><img loading="lazy" decoding="async" src="${esc(th(pic(p)))}" alt="${esc(p.nombre)}" width="1100" height="1375"></div><div class="card__meta"><div><h3>${esc(p.nombre)}</h3><p>${esc(label[p.categoria]||'')}</p><p class="price">${priceHTML(p)}</p></div><span class="card__go">Ver ficha</span></div></button>`).join('');
@@ -37,7 +42,7 @@ async function init(){
  $('news').innerHTML=N.map(n=>`<article class="news__item reveal">${n.foto?`<img loading="lazy" decoding="async" src="${esc(th(n.foto))}" alt="${esc(n.titulo)}">`:''}<div><span class="tag${/oferta/i.test(n.etiqueta)?' tag--oferta':''}">${esc(n.etiqueta||'Novedad')}</span><h3>${esc(n.titulo)}</h3><p>${esc(n.texto)}</p></div></article>`).join('');
  document.querySelectorAll('[data-wa]').forEach(a=>{a.href=wa(a.dataset.wa);a.target='_blank';a.rel='noopener'});
  const g=$('grid'),sheet=$('sheet');
- g.addEventListener('click',e=>{const b=e.target.closest('.card');if(!b)return;const p=P[b.dataset.i];
+ document.addEventListener('click',e=>{const b=e.target.closest('.card[data-i],.feat');if(!b)return;const p=P[b.dataset.i];
   $('sheet-img').src=pic(p);{const F=(p.fotos||[]).map(f=>typeof f==='string'?f:f.foto);$('sheet-thumbs').innerHTML=F.length>1?F.map((f,k)=>`<button type="button" aria-label="Ver foto ${k+1} de ${F.length}" aria-pressed="${!k}" class="${k?'':'on'}" data-src="${esc(f)}"><img src="${esc(th(f))}" alt="" loading="lazy"></button>`).join(''):'';}$('sheet-img').alt=p.nombre;$('sheet-cat').textContent=label[p.categoria]||'';$('sheet-title').textContent=p.nombre;$('sheet-desc').textContent=p.descripcion||'';
   $('sheet-specs').innerHTML=[['Medidas',p.medidas],['Material',p.material]].filter(x=>x[1]).map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('');
   $('sheet-price').innerHTML=priceHTML(p);

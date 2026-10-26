@@ -61,3 +61,13 @@ h2{font:500 22px/1.2 Fraunces,Georgia,serif;margin:0 0 4px}
 .icon{width:40px;height:44px;border-radius:10px;border:1px solid var(--line);background:#fff}
 .empty{padding:40px;text-align:center;color:var(--stone);background:#fff;border-radius:var(--r)}
 [hidden]{display:none!important}
+.star-sw{display:flex;align-items:center;gap:14px;padding:16px;border-radius:14px;background:#F1E3D3;border:2px solid rgba(143,90,49,.25);cursor:pointer}
+.star-sw:has(input:checked){background:#F7E7C6;border-color:var(--walnut)}
+.star-sw input{appearance:none;width:56px;height:32px;border-radius:999px;background:#C9C1B4;position:relative;transition:.2s;flex:none}
+.star-sw input::after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#fff;transition:.2s}
+.star-sw input:checked{background:var(--walnut)}.star-sw input:checked::after{left:27px}
+.star-sw b{display:block;font-size:18px}.star-sw small{color:var(--stone);font-size:14px}
+.row .price{display:grid;justify-items:end;gap:6px}
+.up{font-size:13px;font-weight:600;color:var(--navy);background:var(--linen);border:1px solid rgba(41,56,79,.25);border-radius:999px;padding:5px 10px}.up.first{color:var(--ok);border-color:transparent;background:#E3F1E8}
+.done{position:fixed;left:50%;top:70px;transform:translateX(-50%);z-index:11;width:min(560px,calc(100% - 24px));background:#fff;border:2px solid var(--ok);border-radius:16px;padding:16px 44px 16px 16px;box-shadow:0 16px 40px rgba(0,0,0,.18);display:grid;gap:8px}
+.done b{font-size:18px;color:var(--ok)}.done .btn{justify-self:start}.done .x{position:absolute;top:10px;right:10px;width:32px;height:32px}

@@ -90,3 +90,18 @@ test('la web pide las fotos subidas al commit actual, no a main (cache de 5 min)
   const s = fs.readFileSync(new URL('../app.js', import.meta.url), 'utf8');
   assert.match(s, /if\(d\.sha\)SHA=d\.sha/); assert.match(s, /RAW\.replace\(\/main\\\/\$\/,SHA\+'\/'\)/);
 });
+
+import { passwordLogin, passwordMode, pbkdf2 } from '../functions/api/_lib.js';
+test('login con contraseña: hash, rate limit, sesión', async () => {
+  const b = (u) => Buffer.from(u).toString('base64url');
+  const salt = new Uint8Array(16).fill(7); const h = await pbkdf2('prueba-123', salt, 1000);
+  const env = { ADMIN_PASSWORD_HASH: `pbkdf2$1000$${b(salt)}$${b(h)}`, SESSION_SECRET: 'x' };
+  assert.ok(passwordMode(env)); assert.ok(!passwordMode({}));
+  const m = new Map(); const st = { get: async (k) => m.get(k) || null, put: async (k, v) => m.set(k, structuredClone(v)) };
+  const u = await passwordLogin(env, 'prueba-123', '1.1.1.1', st); assert.equal(u.pw, 1);
+  for (let i = 0; i < 4; i++) await assert.rejects(passwordLogin(env, 'mal', '2.2.2.2', st), /incorrecta/);
+  await assert.rejects(passwordLogin(env, 'mal', '2.2.2.2', st), /Demasiados/);
+  await assert.rejects(passwordLogin(env, 'prueba-123', '2.2.2.2', st), /Demasiados/);
+  const s = await makeSession(env, u); const req = new Request('https://x/', { headers: { cookie: 'mm_s=' + s } });
+  assert.equal((await readSession(req, env)).pw, 1);
+});

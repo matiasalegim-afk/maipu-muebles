@@ -205,3 +205,17 @@ address{font:300 28px/1.3 var(--serif);font-style:normal;margin:40px 0 32px}
 
 .chip,.thumbs button{min-height:44px}.thumbs button{height:70px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee__track{animation:none!important}}
+
+/* Destacados y recién llegados: justo debajo del hero */
+.dest{padding:8px var(--m) 56px}
+.dest__head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.dest__head .eyebrow{margin-bottom:12px;color:var(--walnut)}
+.dest__row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,24%);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:thin}
+.feat{scroll-snap-align:start;text-align:left;display:grid;gap:10px}
+.feat .mask{aspect-ratio:4/5;border-radius:2px}.feat img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.feat:hover img{transform:scale(1.04)}
+.feat h3{font:400 20px/1.15 var(--serif);letter-spacing:-.01em}
+.feat .price{font-size:15px}
+.badge{position:absolute;top:10px;left:10px;z-index:1;background:var(--navy);color:var(--linen);font:600 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:6px 9px;border-radius:2px}
+.badge--new{background:var(--walnut)}
+@media(max-width:900px){.hero{min-height:auto;padding-bottom:32px}.hero__facts{margin-top:32px}.dest__row{grid-auto-columns:62%}.dest{padding-bottom:40px}}

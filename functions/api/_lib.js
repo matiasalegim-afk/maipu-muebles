@@ -91,7 +91,7 @@ export async function readSession(req, env, now = Date.now()) {
   const [body, sig] = m[1].split('.');
   if (!sig || sig !== (await hmac(env, body))) return null;
   const u = JSON.parse(new TextDecoder().decode(unb64u(body)));
-  if (u.exp < now || !emails(env).includes(u.email)) return null;
+  if (u.exp < now || (!u.pw && !emails(env).includes(u.email))) return null;
   return u;
 }
 export const cookie = (v, age) => `mm_s=${v}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${age}`;
@@ -152,4 +152,24 @@ export async function publicContent(env, f = fetch) {
     out[n] = await r.json();
   }));
   return out;
+}
+
+// ---------- login con contraseña (ADMIN_PASSWORD_HASH = "pbkdf2$<iter>$<salt b64u>$<hash b64u>") ----------
+// Si ADMIN_PASSWORD_HASH no existe, el panel sigue con el login por código al mail (fallback).
+export const passwordMode = (env) => /^pbkdf2\$\d+\$[\w-]+\$[\w-]+$/.test(env.ADMIN_PASSWORD_HASH || '');
+export async function pbkdf2(pw, salt, iter) {
+  const k = await crypto.subtle.importKey('raw', enc.encode(pw), 'PBKDF2', false, ['deriveBits']);
+  return new Uint8Array(await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt, iterations: iter }, k, 256));
+}
+const eq = (a, b) => { let d = a.length ^ b.length; for (let i = 0; i < Math.max(a.length, b.length); i++) d |= (a[i] | 0) ^ (b[i] | 0); return d === 0; };
+const PW_MAX = 5, PW_WIN = 15 * 60;
+export async function passwordLogin(env, pw, ip, st = store(env), now = Date.now()) {
+  const k = 'pw:' + (ip || 'x'); const r = (await st.get(k)) || { n: 0, t: now };
+  if (now - r.t > PW_WIN * 1e3) { r.n = 0; r.t = now; }
+  if (r.n >= PW_MAX) throw Object.assign(new Error('Demasiados intentos. Esperá 15 minutos y probá de nuevo.'), { status: 429 });
+  const [, iter, salt, hash] = env.ADMIN_PASSWORD_HASH.split('$');
+  const ok = eq(await pbkdf2(String(pw || ''), unb64u(salt), +iter), unb64u(hash));
+  if (!ok) { r.n++; await st.put(k, r, PW_WIN); throw Object.assign(new Error(r.n >= PW_MAX ? 'Demasiados intentos. Esperá 15 minutos y probá de nuevo.' : 'Contraseña incorrecta.'), { status: r.n >= PW_MAX ? 429 : 403 }); }
+  await st.put(k, { n: 0, t: now }, 60);
+  return { email: 'panel@maipumuebles', name: 'Maipú', pw: 1 };
 }

@@ -21,6 +21,18 @@ async function start() {
   let s;
   try { s = await api('/api/session'); } catch { app.innerHTML = '<div class="center"><p>No se pudo conectar. Recargá la página.</p></div>'; return; }
   if (s.user) return load(s.user);
+  if (s.mode === 'password') {
+    const pw = (msg = '') => {
+      app.innerHTML = `<div class="center"><form class="login" id="pf"><img src="/logo.svg" alt="Maipú Muebles"><h1>Hola 👋</h1><p class="sub">Escribí la contraseña del panel.</p><input id="pw" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña" required style="width:100%;font-size:18px;padding:12px;margin:8px 0;border-radius:10px;border:1px solid #ccd"><button class="btn" id="pb" style="width:100%">Entrar</button><small class="sub" id="lerr">${esc(msg)}</small></form></div>`;
+      $('#pw').focus();
+      $('#pf').onsubmit = async (ev) => {
+        ev.preventDefault(); $('#pb').disabled = true; $('#lerr').textContent = 'Entrando…';
+        try { const r = await api('/api/session', { method: 'POST', body: JSON.stringify({ password: $('#pw').value }) }); load(r.user); }
+        catch (e) { $('#lerr').textContent = e.message; $('#pb').disabled = false; $('#pw').select(); }
+      };
+    };
+    return pw();
+  }
   const saved = localStorage.getItem('mm_email') || '';
   const step1 = (msg = '') => {
     app.innerHTML = `<div class="center"><form class="login" id="lf"><img src="/logo.svg" alt="Maipú Muebles"><h1>Hola 👋</h1><p class="sub">Escribí tu mail y te mandamos un código para entrar.</p><input id="em" type="email" inputmode="email" autocomplete="email" placeholder="tu@gmail.com" value="${esc(saved)}" required style="width:100%;font-size:18px;padding:12px;margin:8px 0;border-radius:10px;border:1px solid #ccd"><button class="btn" id="lb" style="width:100%">Mandarme el código</button><small class="sub" id="lerr">${esc(msg)}</small></form></div>`;
@@ -51,7 +63,7 @@ async function load(user) {
 }
 
 // ---------- vistas ----------
-const TABS = [['productos', 'Productos'], ['novedades', 'Novedades y ofertas'], ['categorias', 'Categorías'], ['ajustes', 'Local y horarios'], ['home', 'Textos de la web']];
+const TABS = [['productos', 'Productos'], ['novedades', 'Avisos del local'], ['categorias', 'Categorías'], ['ajustes', 'Local y horarios'], ['home', 'Textos de la web']];
 const cats = () => (D.categorias?.items?.length ? D.categorias.items.map((c) => [c.id, c.nombre]) : CATS_FALLBACK);
 function render() {
   sync();
@@ -59,7 +71,7 @@ function render() {
   let h = `<nav class="tabs" role="tablist">${TABS.map(([k, l]) => `<button role="tab" data-tab="${k}" aria-selected="${k === t}">${l}</button>`).join('')}</nav>`;
   if (view.idx !== null) h += editor();
   else if (t === 'productos') h += listaProductos();
-  else if (t === 'novedades') h += listaSimple('novedades', 'Novedades y ofertas', (n) => [n.titulo, n.etiqueta, n.foto, n.publicado !== false], 'Nueva novedad');
+  else if (t === 'novedades') h += listaSimple('novedades', 'Avisos del local', (n) => [n.titulo, n.etiqueta, n.foto, n.publicado !== false], 'Nueva novedad');
   else if (t === 'categorias') h += listaSimple('categorias', 'Categorías', (c) => [c.nombre, c.id, c.foto, true], 'Nueva categoría');
   else if (t === 'ajustes') h += formAjustes();
   else h += formHome();
@@ -71,12 +83,12 @@ function listaProductos() {
   const q = view.q.toLowerCase();
   const vis = items.map((p, i) => [p, i]).filter(([p]) => (!q || String(p.nombre || '').toLowerCase().includes(q)) && (!view.cat || p.categoria === view.cat));
   const lab = Object.fromEntries(cats());
-  return `<h1>Productos</h1><p class="sub">${items.length} productos · ${items.filter((p) => p.publicado !== false).length} visibles en la web</p>
+  return `<h1>Productos</h1><p class="sub">${items.length} productos · ${items.filter((p) => p.publicado !== false).length} visibles en la web · El orden de esta lista es el orden de la web: el primero sale primero.</p>
   <div class="tools"><input id="q" type="search" placeholder="Buscar producto…" value="${esc(view.q)}"><select id="fcat"><option value="">Todas las categorías</option>${cats().map(([v, l]) => `<option value="${v}" ${v === view.cat ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select><button class="btn" data-new="productos">+ Nuevo producto</button></div>
-  <div class="list">${vis.map(([p, i]) => `<button class="row" data-edit="${i}"><div class="ph">${p.fotos?.[0] ? `<img loading="lazy" src="${esc(src(foto(p.fotos[0])))}" alt="">` : ''}</div><div><b>${esc(p.nombre || 'Sin nombre')}</b><small>${esc(lab[p.categoria] || p.categoria || '')}</small><div>${p.publicado === false ? '<span class="pill off">Oculto</span>' : ''}${p.destacado ? '<span class="pill star">★ Destacado</span>' : ''}${p.precio_anterior ? '<span class="pill">Oferta</span>' : ''}</div></div><span class="price">${esc(ars(p.precio) || 'Consultar')}</span></button>`).join('') || '<div class="empty">No hay productos con ese filtro.</div>'}</div>`;
+  <div class="list">${vis.map(([p, i]) => `<button class="row" data-edit="${i}"><div class="ph">${p.fotos?.[0] ? `<img loading="lazy" src="${esc(src(foto(p.fotos[0])))}" alt="">` : ''}</div><div><b>${esc(p.nombre || 'Sin nombre')}</b><small>${esc(lab[p.categoria] || p.categoria || '')}</small><div>${p.publicado === false ? '<span class="pill off">Oculto</span>' : ''}${p.destacado ? '<span class="pill star">★ Destacado</span>' : ''}${p.precio_anterior ? '<span class="pill">Oferta</span>' : ''}</div></div><span class="price">${esc(ars(p.precio) || 'Consultar')}${i ? `<span class="up" role="button" data-top="${i}" aria-label="Subir al principio">⬆︎ Subir</span>` : '<span class="up first">1º en la web</span>'}</span></button>`).join('') || '<div class="empty">No hay productos con ese filtro.</div>'}</div>`;
 }
 function listaSimple(k, titulo, f, nuevo) {
-  return `<h1>${titulo}</h1><p class="sub">Tocá uno para editarlo.</p><div class="tools"><button class="btn" data-new="${k}">+ ${nuevo}</button></div>
+  return `<h1>${titulo}</h1><p class="sub">${k === 'novedades' ? 'Carteles de ofertas y avisos (no son productos). Para que un mueble salga arriba de todo en la web, usá ⭐ en Productos.' : 'Tocá uno para editarlo.'}</p><div class="tools"><button class="btn" data-new="${k}">+ ${nuevo}</button></div>
   <div class="list">${D[k].items.map((it, i) => { const [a, b, ph, on] = f(it); return `<button class="row" data-edit="${i}"><div class="ph">${ph ? `<img loading="lazy" src="${esc(src(ph))}" alt="">` : ''}</div><div><b>${esc(a || 'Sin título')}</b><small>${esc(b || '')}</small>${on ? '' : '<div><span class="pill off">Oculto</span></div>'}</div><span></span></button>`; }).join('') || '<div class="empty">Todavía no hay nada cargado.</div>'}</div>`;
 }
 const foto = (f) => (typeof f === 'string' ? f : f?.foto || '');
@@ -88,6 +100,8 @@ function editor() {
   const head = `<a href="#" class="back" data-back>← Volver a la lista</a>`;
   const foot = `<div class="sticky"><button class="btn danger" data-del>Eliminar</button><button class="btn" data-back>Listo</button></div>`;
   if (k === 'productos') return `${head}<div class="card"><h2>${esc(it.nombre || 'Nuevo producto')}</h2>
+    <label class="star-sw"><input type="checkbox" data-k="destacado" ${it.destacado ? 'checked' : ''}><span><b>⭐ Destacar en el inicio</b><small>Sale arriba de todo en la web, en “Lo nuevo en Maipú”.</small></span></label>
+    ${view.idx ? '<button class="btn ghost" data-top="' + view.idx + '">⬆︎ Subir al principio de la web</button>' : '<p class="sub" style="margin:0">✅ Está primero en la web.</p>'}
     ${inp('nombre', 'Nombre', it.nombre)}
     <label class="f"><span>Categoría</span><select data-k="categoria">${cats().map(([v, l]) => `<option value="${v}" ${v === it.categoria ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select></label>
     ${fotosUI('fotos', (it.fotos || []).map(foto))}
@@ -95,7 +109,6 @@ function editor() {
     <div class="grid2">${inp('medidas', 'Medidas', it.medidas)}${inp('material', 'Material', it.material)}</div>
     ${inp('descripcion', 'Descripción corta', it.descripcion, { area: 1 })}
     ${sw('publicado', 'Visible en la web', it.publicado !== false, 'Apagalo para ocultarlo sin borrarlo.')}
-    ${sw('destacado', 'Destacado', !!it.destacado, 'Aparece primero.')}
     ${foot}</div>`;
   if (k === 'novedades') return `${head}<div class="card"><h2>${esc(it.titulo || 'Nueva novedad')}</h2>${inp('titulo', 'Título', it.titulo)}
     <label class="f"><span>Tipo</span><select data-k="etiqueta">${['Novedad', 'Oferta'].map((v) => `<option ${v === it.etiqueta ? 'selected' : ''}>${v}</option>`).join('')}</select></label>
@@ -142,13 +155,14 @@ app.addEventListener('change', async (e) => {
   }
 });
 app.addEventListener('click', (e) => {
-  const b = e.target.closest('button,a'); if (!b) return;
+  const b = e.target.closest('[data-top],button,a'); if (!b) return;
   const d = b.dataset;
+  if (d.top) { e.preventDefault(); e.stopPropagation(); const a = D.productos.items; const [x] = a.splice(+d.top, 1); a.unshift(x); if (view.idx !== null) view.idx = 0; toast('Listo: ahora sale primero. Tocá Guardar y publicar.'); return render(); }
   if (d.tab) { view = { tab: d.tab, idx: null, q: '', cat: '' }; return render(); }
   if (d.edit) { view.idx = +d.edit; return render(); }
   if ('back' in d) { e.preventDefault(); view.idx = null; return render(); }
   if (d.new) {
-    const nuevo = d.new === 'productos' ? { nombre: '', categoria: view.cat || cats()[0][0], fotos: [], precio: '', precio_anterior: '', medidas: '', material: '', descripcion: '', destacado: false, publicado: true }
+    const nuevo = d.new === 'productos' ? { nombre: '', categoria: view.cat || cats()[0][0], fotos: [], precio: '', precio_anterior: '', medidas: '', material: '', descripcion: '', destacado: true, publicado: true, creado: new Date().toISOString().slice(0, 10) }
       : d.new === 'novedades' ? { titulo: '', etiqueta: 'Novedad', texto: '', foto: '', publicado: true } : { id: '', nombre: '', foto: '' };
     D[d.new].items.unshift(nuevo); view.idx = 0; return render();
   }
@@ -185,9 +199,16 @@ async function guardar() {
   try {
     const r = await api('/api/content', { method: 'POST', body: JSON.stringify({ sha, files, uploads, deletes, summary: 'actualizar ' + cambios.join(', ').toLowerCase() }) });
     sha = r.sha; D = { ...D, ...files }; ORIG = JSON.stringify(D); pend.clear(); quitadas.clear();
-    toast('¡Guardado y publicado! Recargá la web y ya lo ves.'); render();
+    render(); listo();
   } catch (e) { toast(e.status === 401 ? 'Se venció la sesión. Volvé a entrar (tus cambios siguen acá si no recargás).' : e.status === 409 ? e.message : 'No se pudo guardar. Revisá la conexión y tocá de nuevo Guardar y publicar. (' + e.message + ')', 1); if (e.status === 401) start(); }
   finally { btn.disabled = false; btn.textContent = 'Guardar y publicar'; }
+}
+function listo() {
+  const old = $('#done'); if (old) old.remove();
+  const el = document.createElement('div'); el.id = 'done'; el.className = 'done'; el.setAttribute('role', 'status');
+  el.innerHTML = '<b>✅ Ya está publicado</b><span>Lo ves arriba de todo en la web (recargá la página).</span><a class="btn" href="/?v=' + Date.now() + '#destacados" target="_blank" rel="noopener">Ver la web</a><button class="x" aria-label="Cerrar">✕</button>';
+  el.querySelector('.x').onclick = () => el.remove();
+  document.body.appendChild(el); clearTimeout(listo._t); listo._t = setTimeout(() => el.remove(), 20000);
 }
 function limpiar(k, data) {
   const c = JSON.parse(JSON.stringify(data));
