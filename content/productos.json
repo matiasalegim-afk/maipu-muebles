@@ -205,7 +205,7 @@
       "publicado": true,
       "precio": "45800",
       "material": "Melamina",
-      "destacado": false,
+      "destacado": true,
       "nombre": "Mesa de Luz Pack",
       "descripcion": "Disponible en colores varios.",
       "fotos": [
@@ -216,7 +216,7 @@
       "medidas": "Dimensiones externas de 56x38x37 cm"
     },
     {
-      "destacado": false,
+      "destacado": true,
       "publicado": true,
       "nombre": "Mesa de Luz Express",
       "categoria": "dormitorio",
