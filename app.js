@@ -6,9 +6,11 @@ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const $=id=>document.getElementById(id);
 // Contenido en vivo desde GitHub: lo que Sofía guarda en el panel se ve sin esperar un deploy de Netlify
 const RAW='https://raw.githubusercontent.com/matiasalegim-afk/maipu-muebles/main/';
-const up=v=>typeof v==='string'?(/^\/?img\/uploads\//.test(v)?RAW+v.replace(/^\//,''):v):Array.isArray(v)?v.map(up):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,up(x)])):v;
+// Fotos subidas: URL fija al commit actual (sha), así una foto recién subida se ve al instante (raw/main cachea 5 min, incluso los 404)
+let SHA='main';
+const up=v=>typeof v==='string'?(/^\/?img\/uploads\//.test(v)?RAW.replace(/main\/$/,SHA+'/')+v.replace(/^\//,''):v):Array.isArray(v)?v.map(up):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,up(x)])):v;
 let LIVE=null;const live=()=>LIVE||(LIVE=fetch(`/api/public-content?t=${Date.now()}`,{cache:'no-store'}).then(r=>{if(!r.ok)throw r.status;return r.json()}).catch(()=>null));
-const get=f=>live().then(d=>{if(d&&d[f])return up(d[f]);throw 0}).catch(()=>fetch(`content/${f}.json`,{cache:'no-cache'}).then(r=>r.json()));
+const get=f=>live().then(d=>{if(d&&d[f]){if(d.sha)SHA=d.sha;return up(d[f])}throw 0}).catch(()=>fetch(`content/${f}.json`,{cache:'no-cache'}).then(r=>r.json()));
 const th=f=>/^\/?img\/(productos\/)?[^/]+\.webp$/.test(f)?f.replace(/\.webp$/,'-600.webp'):f;
 const pic=p=>{const f=(p.fotos||[])[0];return f?(typeof f==='string'?f:f.foto):'img/local.webp'};
 // Netlify Identity: redirect invited users to /admin after login

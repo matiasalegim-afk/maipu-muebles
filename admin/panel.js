@@ -46,7 +46,7 @@ async function load(user) {
   $('#who').innerHTML = `<span>${esc(user.name)}</span><button id="out">Salir</button>`;
   $('#out').onclick = async () => { if (dirty() && !confirm('Tenés cambios sin guardar. ¿Salir igual?')) return; await api('/api/session', { method: 'DELETE' }); location.reload(); };
   app.innerHTML = '<div class="center"><div class="spin"></div></div>';
-  try { const r = await api('/api/content'); sha = r.sha; delete r.sha; D = r; ORIG = JSON.stringify(D); pend.clear(); quitadas.clear(); render(); }
+  try { const r = await api('/api/content'); sha = r.sha; delete r.sha; D = r; const c0 = cats()[0][0]; (D.productos?.items || []).forEach((p) => { if (!p.categoria) p.categoria = c0; }); ORIG = JSON.stringify(D); pend.clear(); quitadas.clear(); render(); }
   catch (e) { if (e.status === 401) return start(); app.innerHTML = `<div class="center"><p>${esc(e.message)}</p><button class="btn" onclick="location.reload()">Reintentar</button></div>`; }
 }
 
@@ -69,7 +69,7 @@ function render() {
 function listaProductos() {
   const items = D.productos.items;
   const q = view.q.toLowerCase();
-  const vis = items.map((p, i) => [p, i]).filter(([p]) => (!q || p.nombre.toLowerCase().includes(q)) && (!view.cat || p.categoria === view.cat));
+  const vis = items.map((p, i) => [p, i]).filter(([p]) => (!q || String(p.nombre || '').toLowerCase().includes(q)) && (!view.cat || p.categoria === view.cat));
   const lab = Object.fromEntries(cats());
   return `<h1>Productos</h1><p class="sub">${items.length} productos · ${items.filter((p) => p.publicado !== false).length} visibles en la web</p>
   <div class="tools"><input id="q" type="search" placeholder="Buscar producto…" value="${esc(view.q)}"><select id="fcat"><option value="">Todas las categorías</option>${cats().map(([v, l]) => `<option value="${v}" ${v === view.cat ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select><button class="btn" data-new="productos">+ Nuevo producto</button></div>
@@ -186,7 +186,7 @@ async function guardar() {
     const r = await api('/api/content', { method: 'POST', body: JSON.stringify({ sha, files, uploads, deletes, summary: 'actualizar ' + cambios.join(', ').toLowerCase() }) });
     sha = r.sha; D = { ...D, ...files }; ORIG = JSON.stringify(D); pend.clear(); quitadas.clear();
     toast('¡Guardado y publicado! Recargá la web y ya lo ves.'); render();
-  } catch (e) { toast(e.status === 401 ? 'Se venció la sesión. Volvé a entrar (tus cambios siguen acá si no recargás).' : 'No se pudo guardar: ' + e.message, 1); if (e.status === 401) start(); }
+  } catch (e) { toast(e.status === 401 ? 'Se venció la sesión. Volvé a entrar (tus cambios siguen acá si no recargás).' : e.status === 409 ? e.message : 'No se pudo guardar. Revisá la conexión y tocá de nuevo Guardar y publicar. (' + e.message + ')', 1); if (e.status === 401) start(); }
   finally { btn.disabled = false; btn.textContent = 'Guardar y publicar'; }
 }
 function limpiar(k, data) {

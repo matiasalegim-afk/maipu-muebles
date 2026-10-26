@@ -106,8 +106,15 @@ export const CONTENT = ['productos', 'novedades', 'categorias', 'home', 'ajustes
 const utf8b64 = (s) => { let o = ''; const b = enc.encode(s); for (let i = 0; i < b.length; i += 0x8000) o += String.fromCharCode(...b.subarray(i, i + 0x8000)); return btoa(o); };
 
 /** Un solo commit con JSONs + fotos nuevas + fotos borradas. */
-export async function commitAll(env, { files = {}, uploads = [], deletes = [], message, expectSha }, f = fetch) {
-  const ref = await gh(env, `/git/ref/heads/${BRANCH(env)}`, {}, f);
+export async function commitAll(env, opts, f = fetch) {
+  // Reintenta si otro guardado (o un push de código) movió main entre leer y escribir; nunca pisa contenido ajeno
+  for (let i = 0; ; i++) {
+    try { return await commitOnce(env, opts, f); }
+    catch (e) { if (i < 2 && /GitHub 422 \/git\/refs/.test(e.message)) continue; throw e; }
+  }
+}
+async function commitOnce(env, { files = {}, uploads = [], deletes = [], message, expectSha }, f = fetch) {
+  const ref = await gh(env, `/git/ref/heads/${BRANCH(env)}`, { cache: 'no-store' }, f);
   const head = ref.object.sha;
   if (expectSha && expectSha !== head && Object.keys(files).length) {
     const cmp = await gh(env, `/compare/${expectSha}...${head}`, {}, f);

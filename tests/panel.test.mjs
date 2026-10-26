@@ -73,3 +73,20 @@ test('contenido público: lee el sha actual de main y los archivos en ese sha', 
   assert.equal(d.sha, 'abc123'); assert.equal(d.productos.n, 'productos.json');
   assert.ok(urls.filter((u) => u.includes('raw.githubusercontent')).every((u) => u.includes('/abc123/content/')));
 });
+test('si main se movió justo al guardar (422 no fast-forward), reintenta sobre el head nuevo', async () => {
+  let heads = ['H1', 'H2'], patches = 0, parents = [];
+  const f = async (url, init = {}) => {
+    if (url.includes('/git/ref/')) return new Response(JSON.stringify({ object: { sha: heads.length > 1 ? heads.shift() : heads[0] } }));
+    if (url.includes('/compare/')) return new Response(JSON.stringify({ files: [{ filename: 'app.js' }] }));
+    if (url.includes('/git/refs/')) { patches++; return patches === 1 ? new Response('Update is not a fast forward', { status: 422 }) : new Response('{}'); }
+    if (init.method === 'POST' && url.endsWith('/git/commits')) parents.push(JSON.parse(init.body).parents[0]);
+    return new Response(JSON.stringify({ sha: 'X', tree: { sha: 'T' } }));
+  };
+  await commitAll(env, { files: { productos: { items: [] } }, expectSha: 'H1', message: 'm' }, f);
+  assert.equal(patches, 2); assert.deepEqual(parents, ['H1', 'H2']);
+});
+test('la web pide las fotos subidas al commit actual, no a main (cache de 5 min)', async () => {
+  const fs = await import('node:fs');
+  const s = fs.readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+  assert.match(s, /if\(d\.sha\)SHA=d\.sha/); assert.match(s, /RAW\.replace\(\/main\\\/\$\/,SHA\+'\/'\)/);
+});
