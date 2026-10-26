@@ -1,7 +1,13 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Panel · Maipú Muebles</title><meta name="robots" content="noindex">
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Panel · Maipú Muebles</title><meta name="robots" content="noindex"><meta name="theme-color" content="#29384F">
+<link rel="icon" href="/favicon-32.png"><link rel="stylesheet" href="/admin/panel.css">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 </head><body>
-<script src="https://unpkg.com/decap-cms@^3.1.0/dist/decap-cms.js"></script>
+<header class="top"><div class="brand"><img src="/logo.svg" alt=""><span>Panel</span></div>
+<div id="who" class="who"></div></header>
+<main id="app"><div class="center"><div class="spin"></div></div></main>
+<div id="bar" class="bar" hidden><span id="bar-msg">Tenés cambios sin guardar</span><button id="discard" class="btn ghost">Descartar</button><button id="save" class="btn">Guardar y publicar</button></div>
+<div id="toast" class="toast" role="status"></div>
+<script src="/admin/panel.js" type="module"></script>
 </body></html>

@@ -1,9 +1,9 @@
-# Guía rápida para Sofía: cargar productos y novedades
+# Guía rápida para Sofía: panel de Maipú Muebles
 
-1. **Entrá al panel**: abrí https://maipumuebles.netlify.app/admin/ y tocá "Login with Netlify Identity". Poné tu mail y la contraseña que elegiste cuando te llegó la invitación. (La primera vez: abrí el mail de invitación y hacé clic en "Accept the invite").
-2. **Elegí qué cargar**: a la izquierda tocá **Productos** (o **Novedades y ofertas**) y después la lista.
-3. **Agregá uno nuevo**: bajá hasta el final y tocá **Agregar producto**. Completá *Nombre* y *Categoría*.
-4. **Subí la foto**: en *Fotos* tocá **Agregar foto → Choose an image → Upload** y elegí la foto del celu o la compu. Si querés, poné precio (si lo dejás vacío dice "consultar"), medidas y material. Dejá tildado **Publicado**.
-5. **Tocá Publicar** (botón arriba a la derecha → *Publish now*). En menos de un minuto aparece en la web. Recargá la página para verlo.
+1. **Entrá**: https://maipumuebles.pages.dev/admin/ → tocá **Continuar con Google** y elegí tu Gmail (sofiachahla17@gmail.com). No hay contraseñas nuevas.
+2. **Productos**: tocá uno para editarlo, o **+ Nuevo producto**. Precio vacío = la web muestra "Consultar precio". Precio anterior = aparece tachado (oferta).
+3. **Fotos**: **＋ Agregar foto** (podés elegir varias del celu). La primera es la portada; ordená con ← →, quitá con 🗑. Las fotos se achican solas.
+4. **Ocultar sin borrar**: apagá "Visible en la web". **Destacado**: aparece primero.
+5. Cuando termines, tocá **Guardar y publicar** (la barra de abajo). En 1 o 2 minutos se ve en la web.
 
-Para sacar un producto sin borrarlo: destildá **Publicado** y volvé a Publicar. Para que aparezca primero: tildá **Destacado**.
+También: Novedades y ofertas, Categorías, Local y horarios (WhatsApp, horarios, cuotas, envío, posventa) y Textos de la web.

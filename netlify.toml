@@ -30,3 +30,10 @@
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Mudanza a Cloudflare Pages: cuando Netlify vuelva a deployar, todo redirige al sitio nuevo
+[[redirects]]
+  from = "/*"
+  to = "https://maipumuebles.pages.dev/:splat"
+  status = 301
+  force = true
