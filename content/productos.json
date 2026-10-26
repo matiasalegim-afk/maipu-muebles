@@ -1,87 +1,82 @@
 {
   "items": [
     {
-      "nombre": "Mesas de luz",
-      "categoria": "dormitorio",
+      "publicado": true,
       "precio": "41800",
-      "precio_anterior": "",
-      "medidas": "",
       "material": "Melamina",
+      "destacado": true,
+      "nombre": "Mesas de luz Milenial Expres",
       "descripcion": "Varios modelos: Pack, Zero, Milenial y Milenial Express. También en otros colores. Incluye costo de armado. Precio desde $ 41.800.",
       "fotos": [
-        "img/productos/post_01_a.webp",
-        "img/productos/post_01_b.webp",
-        "img/productos/post_01_c.webp",
-        "img/productos/post_01_d.webp",
-        "img/productos/post_01_e.webp"
+        "/img/uploads/57264_1.jpg-2.webp"
       ],
-      "destacado": true,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "dormitorio",
+      "medidas": ""
     },
     {
-      "nombre": "Mesas de luz · oferta especial",
-      "categoria": "dormitorio",
+      "publicado": true,
       "precio": "",
-      "precio_anterior": "",
-      "medidas": "",
       "material": "Melamina",
+      "destacado": true,
+      "nombre": "Mesas de luz · oferta especial",
       "descripcion": "Oferta especial en cuatro modelos: $ 39.500, $ 43.100, $ 54.500 y $ 76.800.",
       "fotos": [
         "img/productos/post_16_a.webp",
         "img/productos/post_16_b.webp"
       ],
-      "destacado": true,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "dormitorio",
+      "medidas": ""
     },
     {
-      "nombre": "Cuna + colchón",
-      "categoria": "dormitorio",
+      "publicado": true,
       "precio": "190000",
-      "precio_anterior": "",
-      "medidas": "",
       "material": "",
+      "destacado": false,
+      "nombre": "Cuna + colchón",
       "descripcion": "Cuna con colchón incluido.",
       "fotos": [
         "img/productos/post_13_b.webp"
       ],
-      "destacado": false,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "dormitorio",
+      "medidas": ""
     },
     {
-      "nombre": "Maquillador Hollywood",
-      "categoria": "dormitorio",
+      "publicado": true,
       "precio": "196000",
-      "precio_anterior": "",
-      "medidas": "",
       "material": "Melamina",
+      "destacado": true,
+      "nombre": "Maquillador Hollywood",
       "descripcion": "Espejo con luces y 9 cajones. Reingreso: llegaron pocas unidades.",
       "fotos": [
         "img/productos/post_15.webp"
       ],
-      "destacado": true,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "dormitorio",
+      "medidas": ""
     },
     {
-      "nombre": "Almohada cervical",
-      "categoria": "dormitorio",
+      "publicado": true,
       "precio": "",
-      "precio_anterior": "",
-      "medidas": "",
       "material": "",
+      "destacado": false,
+      "nombre": "Almohada cervical",
       "descripcion": "Además de muebles tenemos colchones, sommiers y almohadas. Consultanos.",
       "fotos": [
         "img/productos/post_12.webp"
       ],
-      "destacado": false,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "dormitorio",
+      "medidas": ""
     },
     {
-      "nombre": "Placares",
-      "categoria": "guardado",
+      "publicado": true,
       "precio": "109800",
-      "precio_anterior": "",
-      "medidas": "57 × 46 × 181 cm (2 puertas)",
       "material": "Melamina blanca",
+      "destacado": true,
+      "nombre": "Placares",
       "descripcion": "Modelos de 2, 3, 4 y 6 puertas con cajones: $ 109.800, $ 158.700, $ 187.200 y $ 266.500. Incluye costo de armado. Varios colores.",
       "fotos": [
         "img/productos/post_03_a.webp",
@@ -90,16 +85,16 @@
         "img/productos/post_03_d.webp",
         "img/productos/post_03_e.webp"
       ],
-      "destacado": true,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "guardado",
+      "medidas": "57 × 46 × 181 cm (2 puertas)"
     },
     {
-      "nombre": "Despenseros",
-      "categoria": "guardado",
+      "publicado": true,
       "precio": "102500",
-      "precio_anterior": "",
-      "medidas": "",
       "material": "Melamina blanca",
+      "destacado": false,
+      "nombre": "Despenseros",
       "descripcion": "Modelos de 2 y 4 puertas o puerta, cajón y estantes: desde $ 102.500.",
       "fotos": [
         "img/productos/post_11_a.webp",
@@ -108,30 +103,30 @@
         "img/productos/post_11_d.webp",
         "img/productos/post_06.webp"
       ],
-      "destacado": false,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "guardado",
+      "medidas": ""
     },
     {
-      "nombre": "Organizador con canasto",
-      "categoria": "guardado",
+      "publicado": true,
       "precio": "63200",
-      "precio_anterior": "",
-      "medidas": "40 × 30 × 90 cm",
       "material": "Madera y canastos de mimbre",
+      "destacado": true,
+      "nombre": "Organizador con canasto",
       "descripcion": "Para guardar verduras y frutas. Oferta del día.",
       "fotos": [
         "img/productos/post_23.webp"
       ],
-      "destacado": true,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "guardado",
+      "medidas": "40 × 30 × 90 cm"
     },
     {
-      "nombre": "Escritorios",
-      "categoria": "escritorios",
+      "publicado": true,
       "precio": "73400",
-      "precio_anterior": "",
-      "medidas": "",
       "material": "Melamina",
+      "destacado": true,
+      "nombre": "Escritorios",
       "descripcion": "Varios modelos: Base, CS, Gamer, 2 cajones, Dakar, Roma, Classic y para PC. Consultanos por medidas y colores.",
       "fotos": [
         "img/productos/post_02_a.webp",
@@ -145,106 +140,119 @@
         "img/productos/post_18_d.webp",
         "img/productos/post_18_e.webp"
       ],
-      "destacado": true,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "escritorios",
+      "medidas": ""
     },
     {
-      "nombre": "Escritorio Classic Bamboo",
-      "categoria": "escritorios",
+      "publicado": true,
       "precio": "131900",
-      "precio_anterior": "",
-      "medidas": "",
       "material": "Melamina madera clara y blanco",
+      "destacado": false,
+      "nombre": "Escritorio Classic Bamboo",
       "descripcion": "Con cajonera de dos cajones.",
       "fotos": [
         "img/productos/post_18_a.webp",
         "img/productos/post_02_e.webp"
       ],
-      "destacado": false,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "escritorios",
+      "medidas": ""
     },
     {
-      "nombre": "Escritorio Orlandi",
-      "categoria": "escritorios",
+      "publicado": true,
       "precio": "73400",
-      "precio_anterior": "",
-      "medidas": "",
       "material": "Melamina blanca",
+      "destacado": false,
+      "nombre": "Escritorio Orlandi",
       "descripcion": "",
       "fotos": [
         "img/productos/post_05.webp"
       ],
-      "destacado": false,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "escritorios",
+      "medidas": ""
     },
     {
-      "nombre": "Sillón de oficina",
-      "categoria": "escritorios",
+      "publicado": true,
       "precio": "150000",
-      "precio_anterior": "",
-      "medidas": "",
       "material": "Ecocuero blanco",
+      "destacado": true,
+      "nombre": "Sillón de oficina",
       "descripcion": "Llegaron pocas unidades.",
       "fotos": [
         "img/productos/post_09.webp"
       ],
-      "destacado": true,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "escritorios",
+      "medidas": ""
     },
     {
-      "nombre": "Kit de cocina",
-      "categoria": "cocina",
+      "publicado": true,
       "precio": "144300",
-      "precio_anterior": "",
-      "medidas": "",
       "material": "Melamina madera y blanco",
+      "destacado": true,
+      "nombre": "Kit de cocina",
       "descripcion": "Alacena + bajomesada. Consultanos por otros modelos.",
       "fotos": [
         "img/productos/post_10.webp"
       ],
-      "destacado": true,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "cocina",
+      "medidas": ""
     },
     {
-      "nombre": "Cocina completa",
-      "categoria": "cocina",
+      "publicado": true,
       "precio": "",
-      "precio_anterior": "",
-      "medidas": "",
       "material": "Melamina blanca",
+      "destacado": false,
+      "nombre": "Cocina completa",
       "descripcion": "Alacena, bajomesada, bacha y porta microondas o aparador de cocina. Consultá precio.",
       "fotos": [
         "img/productos/post_07.webp",
         "img/productos/post_08.webp"
       ],
-      "destacado": false,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "cocina",
+      "medidas": ""
     },
     {
-      "nombre": "Rack de TV",
-      "categoria": "living",
+      "publicado": true,
       "precio": "180400",
-      "precio_anterior": "",
-      "medidas": "",
       "material": "Madera clara",
+      "destacado": true,
+      "nombre": "Rack de TV",
       "descripcion": "Puertas con listones. Última unidad.",
       "fotos": [
         "img/productos/post_19.webp"
       ],
-      "destacado": true,
-      "publicado": true
+      "precio_anterior": "",
+      "categoria": "living",
+      "medidas": ""
     },
     {
-      "nombre": "Bahiut Doors",
-      "categoria": "living",
+      "publicado": true,
       "precio": "",
-      "precio_anterior": "",
-      "medidas": "",
       "material": "Madera y blanco",
+      "destacado": false,
+      "nombre": "Bahiut Doors",
       "descripcion": "Bahiut / rack con puertas.",
       "fotos": [
         "img/productos/post_04.webp"
       ],
+      "precio_anterior": "",
+      "categoria": "living",
+      "medidas": ""
+    },
+    {
+      "destacado": false,
+      "publicado": true
+    },
+    {
+      "destacado": false,
+      "publicado": true
+    },
+    {
       "destacado": false,
       "publicado": true
     }
