@@ -4,7 +4,10 @@ const priceHTML=p=>{const a=ars(p.precio),o=ars(p.precio_anterior);return a?`${o
 const wa=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const $=id=>document.getElementById(id);
-const get=f=>fetch(`content/${f}.json`,{cache:'no-cache'}).then(r=>r.json());
+// Contenido en vivo desde GitHub: lo que Sofía guarda en el panel se ve sin esperar un deploy de Netlify
+const RAW='https://raw.githubusercontent.com/matiasalegim-afk/maipu-muebles/main/';
+const up=v=>typeof v==='string'?(/^\/?img\/uploads\//.test(v)?RAW+v.replace(/^\//,''):v):Array.isArray(v)?v.map(up):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,up(x)])):v;
+const get=f=>fetch(`${RAW}content/${f}.json?t=${Date.now()}`,{cache:'no-store'}).then(r=>{if(!r.ok)throw r.status;return r.json()}).then(up).catch(()=>fetch(`content/${f}.json`,{cache:'no-cache'}).then(r=>r.json()));
 const th=f=>/^\/?img\/(productos\/)?[^/]+\.webp$/.test(f)?f.replace(/\.webp$/,'-600.webp'):f;
 const pic=p=>{const f=(p.fotos||[])[0];return f?(typeof f==='string'?f:f.foto):'img/local.webp'};
 // Netlify Identity: redirect invited users to /admin after login
