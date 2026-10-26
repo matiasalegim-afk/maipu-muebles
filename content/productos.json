@@ -1,6 +1,20 @@
 {
   "items": [
     {
+      "nombre": "chibuki",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/chibuki-mvped0qxscm.webp"
+      ],
+      "precio": "1 millon",
+      "precio_anterior": "jamash",
+      "medidas": "1 ",
+      "material": "1",
+      "descripcion": "",
+      "destacado": true,
+      "publicado": true
+    },
+    {
       "publicado": true,
       "precio": "196000",
       "material": "Melamina",
