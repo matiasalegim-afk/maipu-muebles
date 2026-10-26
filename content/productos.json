@@ -2,47 +2,17 @@
   "items": [
     {
       "publicado": true,
-      "precio": "51100",
+      "precio": "45800",
       "material": "Melamina",
-      "destacado": true,
-      "nombre": "Mesas de luz Milenial",
-      "descripcion": "Varios modelos: Pack, Zero, Milenial y Milenial Express. También en otros colores. Incluye costo de armado. Precio desde $ 41.800.",
-      "fotos": [
-        "/img/uploads/57264_1.jpg-2.webp",
-        "/img/uploads/mesa_de_luz_milenial-removebg-preview.png"
-      ],
-      "precio_anterior": "",
-      "categoria": "dormitorio",
-      "medidas": ""
-    },
-    {
-      "publicado": true,
-      "precio": "",
-      "material": "Melamina",
-      "destacado": true,
-      "nombre": "Mesas de luz · oferta especial",
-      "descripcion": "Oferta especial en cuatro modelos: $ 39.500, $ 43.100, $ 54.500 y $ 76.800.",
-      "fotos": [
-        "img/productos/post_16_a.webp",
-        "img/productos/post_16_b.webp"
-      ],
-      "precio_anterior": "",
-      "categoria": "dormitorio",
-      "medidas": ""
-    },
-    {
-      "publicado": true,
-      "precio": "190000",
-      "material": "",
       "destacado": false,
-      "nombre": "Cuna + colchón",
-      "descripcion": "Cuna con colchón incluido.",
+      "nombre": "Mesa de Luz Pack",
+      "descripcion": "Disponible en colores varios.",
       "fotos": [
-        "img/productos/post_13_b.webp"
+        "/img/uploads/mesa-de-luz-pack-.webp"
       ],
       "precio_anterior": "",
       "categoria": "dormitorio",
-      "medidas": ""
+      "medidas": "Dimensiones externas de 56x38x37 cm"
     },
     {
       "publicado": true,
@@ -244,6 +214,18 @@
       "precio_anterior": "",
       "categoria": "living",
       "medidas": ""
+    },
+    {
+      "destacado": false,
+      "publicado": true
+    },
+    {
+      "destacado": false,
+      "publicado": true
+    },
+    {
+      "destacado": false,
+      "publicado": true
     },
     {
       "destacado": false,
