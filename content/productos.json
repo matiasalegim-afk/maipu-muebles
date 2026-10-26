@@ -203,17 +203,18 @@
     },
     {
       "publicado": true,
-      "precio": "45800",
+      "precio": "41800",
       "material": "Melamina",
-      "destacado": true,
-      "nombre": "Mesa de Luz Pack",
+      "destacado": false,
+      "nombre": "Mesa de Luz Zero",
       "descripcion": "Disponible en colores varios.",
       "fotos": [
-        "/img/uploads/mesa-de-luz-pack-.webp"
+        "/img/uploads/mesa-de-luz-zero-mvpdduiy32p.jpg",
+        "/img/uploads/mesa-de-luz-zero-mvpdeakjv4c.jpg"
       ],
       "precio_anterior": "",
       "categoria": "dormitorio",
-      "medidas": "Dimensiones externas de 56x38x37 cm"
+      "medidas": "56x38x38cm"
     },
     {
       "destacado": true,
