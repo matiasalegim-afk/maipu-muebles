@@ -65,3 +65,11 @@ test('conflicto si otro guardó el mismo archivo', async () => {
   const f = async (url) => new Response(JSON.stringify(url.includes('/git/ref/') ? { object: { sha: 'NEW' } } : url.includes('/compare/') ? { files: [{ filename: 'content/productos.json' }] } : {}));
   await assert.rejects(commitAll(env, { files: { productos: { items: [] } }, expectSha: 'OLD' }, f), (e) => e.status === 409);
 });
+import { publicContent } from '../functions/api/_lib.js';
+test('contenido público: lee el sha actual de main y los archivos en ese sha', async () => {
+  const urls = [];
+  const f = async (u, init) => { urls.push(u); if (u.includes('/git/ref/')) { assert.equal(init.cache, 'no-store'); return new Response(JSON.stringify({ object: { sha: 'abc123' } })); } return new Response(JSON.stringify({ n: u.split('/').pop() })); };
+  const d = await publicContent({ GITHUB_TOKEN: 't' }, f);
+  assert.equal(d.sha, 'abc123'); assert.equal(d.productos.n, 'productos.json');
+  assert.ok(urls.filter((u) => u.includes('raw.githubusercontent')).every((u) => u.includes('/abc123/content/')));
+});

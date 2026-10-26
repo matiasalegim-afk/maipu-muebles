@@ -134,3 +134,15 @@ export async function commitAll(env, { files = {}, uploads = [], deletes = [], m
   await gh(env, `/git/refs/heads/${BRANCH(env)}`, { method: 'PATCH', body: JSON.stringify({ sha: c.sha, force: false }) }, f);
   return { sha: c.sha };
 }
+
+// Contenido público siempre fresco: sha actual de main (API, sin caché) + archivos en ese sha (URL inmutable)
+export async function publicContent(env, f = fetch) {
+  const ref = await gh(env, `/git/ref/heads/${BRANCH(env)}`, { cache: 'no-store' }, f);
+  const sha = ref.object.sha, out = { sha };
+  await Promise.all(CONTENT.map(async (n) => {
+    const r = await f(`https://raw.githubusercontent.com/${REPO(env)}/${sha}/content/${n}.json`);
+    if (!r.ok) throw new Error(`raw ${r.status} ${n}`);
+    out[n] = await r.json();
+  }));
+  return out;
+}

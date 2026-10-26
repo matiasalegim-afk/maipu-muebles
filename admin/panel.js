@@ -185,7 +185,7 @@ async function guardar() {
   try {
     const r = await api('/api/content', { method: 'POST', body: JSON.stringify({ sha, files, uploads, deletes, summary: 'actualizar ' + cambios.join(', ').toLowerCase() }) });
     sha = r.sha; D = { ...D, ...files }; ORIG = JSON.stringify(D); pend.clear(); quitadas.clear();
-    toast('¡Listo! Ya está en la web (puede tardar 1 o 2 minutos en verse).'); render();
+    toast('¡Guardado y publicado! Recargá la web y ya lo ves.'); render();
   } catch (e) { toast(e.status === 401 ? 'Se venció la sesión. Volvé a entrar (tus cambios siguen acá si no recargás).' : 'No se pudo guardar: ' + e.message, 1); if (e.status === 401) start(); }
   finally { btn.disabled = false; btn.textContent = 'Guardar y publicar'; }
 }
