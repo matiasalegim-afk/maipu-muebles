@@ -2,20 +2,6 @@
   "items": [
     {
       "publicado": true,
-      "precio": "45800",
-      "material": "Melamina",
-      "destacado": false,
-      "nombre": "Mesa de Luz Pack",
-      "descripcion": "Disponible en colores varios.",
-      "fotos": [
-        "/img/uploads/mesa-de-luz-pack-.webp"
-      ],
-      "precio_anterior": "",
-      "categoria": "dormitorio",
-      "medidas": "Dimensiones externas de 56x38x37 cm"
-    },
-    {
-      "publicado": true,
       "precio": "196000",
       "material": "Melamina",
       "destacado": true,
@@ -216,8 +202,30 @@
       "medidas": ""
     },
     {
+      "publicado": true,
+      "precio": "45800",
+      "material": "Melamina",
       "destacado": false,
-      "publicado": true
+      "nombre": "Mesa de Luz Pack",
+      "descripcion": "Disponible en colores varios.",
+      "fotos": [
+        "/img/uploads/mesa-de-luz-pack-.webp"
+      ],
+      "precio_anterior": "",
+      "categoria": "dormitorio",
+      "medidas": "Dimensiones externas de 56x38x37 cm"
+    },
+    {
+      "destacado": false,
+      "publicado": true,
+      "nombre": "Mesa de Luz Express",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/57264_1.jpg-2.webp"
+      ],
+      "precio": "80500",
+      "medidas": "61x45x38",
+      "material": "Melamina"
     },
     {
       "destacado": false,
