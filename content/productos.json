@@ -2,13 +2,14 @@
   "items": [
     {
       "publicado": true,
-      "precio": "41800",
+      "precio": "51100",
       "material": "Melamina",
       "destacado": true,
-      "nombre": "Mesas de luz Milenial Expres",
+      "nombre": "Mesas de luz Milenial",
       "descripcion": "Varios modelos: Pack, Zero, Milenial y Milenial Express. También en otros colores. Incluye costo de armado. Precio desde $ 41.800.",
       "fotos": [
-        "/img/uploads/57264_1.jpg-2.webp"
+        "/img/uploads/57264_1.jpg-2.webp",
+        "/img/uploads/mesa_de_luz_milenial-removebg-preview.png"
       ],
       "precio_anterior": "",
       "categoria": "dormitorio",
