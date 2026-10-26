@@ -32,7 +32,7 @@ async function init(){
  P=prods.items.filter(p=>p.publicado!==false);
  const isNew=p=>p.creado&&Date.now()-Date.parse(p.creado)<30*864e5;
  {const F=P.filter(p=>p.destacado),R=P.filter(p=>!p.destacado);const L=(F.length>=4?F:F.concat(R.slice(0,4-F.length))).slice(0,12);
-  $('dest').innerHTML=L.map((p,n)=>`<button class="feat" data-i="${P.indexOf(p)}"><div class="mask">${isNew(p)?'<span class="badge badge--new">Nuevo</span>':p.destacado?'<span class="badge">Destacado</span>':''}<img loading="lazy" decoding="async" src="${esc(th(pic(p)))}" alt="${esc(p.nombre)}" width="880" height="1100"></div><h3>${esc(p.nombre)}</h3><p class="price">${priceHTML(p)}</p></button>`).join('');
+  $('dest').innerHTML=L.map((p,n)=>`<button class="feat" data-i="${P.indexOf(p)}"><div class="mask">${isNew(p)?'<span class="badge badge--new">Nuevo</span>':p.destacado?'<span class="badge">Destacado</span>':''}<img loading="${n<2?'eager':'lazy'}" decoding="async" src="${esc(th(pic(p)))}" alt="${esc(p.nombre)}" width="880" height="1100"></div><h3>${esc(p.nombre)}</h3><p class="price">${priceHTML(p)}</p></button>`).join('');
   if(!L.length)$('destacados').hidden=true;}
  const used=cats.items.filter(c=>P.some(p=>p.categoria===c.id));
  $('filters').innerHTML=`<button class="chip is-on" data-f="todos">Todo</button>`+used.map(c=>`<button class="chip" data-f="${esc(c.id)}">${esc(c.nombre)}</button>`).join('');
