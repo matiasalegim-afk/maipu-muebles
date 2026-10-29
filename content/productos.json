@@ -1,6 +1,36 @@
 {
   "items": [
     {
+      "nombre": "Placard 6 puertas",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/placard-6-puertas-mvtmubmpc2a.jpg"
+      ],
+      "precio": "266500",
+      "precio_anterior": "",
+      "medidas": "169x46x181 cm",
+      "material": "Melamina",
+      "descripcion": "Modelos de 2,3, 4 y 6 puertas con cajón y estantes. Placares disponibles en colores varios. \nEl precio publicado incluye el costo de armado.",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-10-29"
+    },
+    {
+      "nombre": "Placard 4 puertas",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/placard-4-puertas-mvtmra5hfyq.jpg"
+      ],
+      "precio": "187200",
+      "precio_anterior": "",
+      "medidas": "113 x 46 x 181 cm",
+      "material": "Melamina",
+      "descripcion": "Modelos de 2, 3, 4 y 6 puertas con cajón y estantes. Placares disponibles en colores varios.",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-10-29"
+    },
+    {
       "nombre": "Escritorio Orlandi",
       "categoria": "dormitorio",
       "fotos": [
