@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "nombre": "Escritorio Roma",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/escritorio-roma-mvtlhma9iif.jpg",
+        "/img/uploads/escritorio-roma-mvtlkzsrfmw.jpg"
+      ],
+      "precio": "88300",
+      "precio_anterior": "",
+      "medidas": "Medidas: profundidad 44cm - altura 76cm - ancho 90cm",
+      "material": "Melamina",
+      "descripcion": "El precio publicado incluye el costo de armado",
+      "destacado": false,
+      "publicado": true,
+      "creado": "2026-10-29"
+    },
+    {
       "nombre": "Escritorio Dakar",
       "categoria": "escritorios",
       "fotos": [
