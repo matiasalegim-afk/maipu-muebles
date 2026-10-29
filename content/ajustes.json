@@ -4,11 +4,11 @@
   "horarios": [
     {
       "dias": "Lunes a viernes",
-      "horas": "9 a 15 · 17 a 21"
+      "horas": "9:00 a 13:00 · 17:00 a 21:00"
     },
     {
       "dias": "Sábados",
-      "horas": "9 a 14"
+      "horas": "9:00 a 14:00"
     },
     {
       "dias": "Domingos",
@@ -16,6 +16,6 @@
     }
   ],
   "cuotas": "Pagá con tarjeta de crédito en cuotas. Consultá los planes vigentes antes de comprar.",
-  "envio": "Entregamos en San Miguel de Tucumán y alrededores. Te pasamos el costo junto con el presupuesto.",
+  "envio": "Entregamos en San Miguel de Tucumán y alrededores. Te pasamos el costo de envío junto con el presupuesto.",
   "posventa": "Si algo llega con un problema, escribinos con una foto por WhatsApp y lo resolvemos."
 }
