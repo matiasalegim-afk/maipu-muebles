@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "nombre": "Escritorio Orlandi",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/escritorio-orlandi-mvtlwk31e90.jpg",
+        "/img/uploads/escritorio-orlandi-mvtlwxz7moq.jpg"
+      ],
+      "precio": "78800",
+      "precio_anterior": "",
+      "medidas": "90 Cm de ancho x 75 Cm de alto x 60 Cm",
+      "material": "Melamina",
+      "descripcion": "El precio publicado incluye el costo de armado",
+      "destacado": false,
+      "publicado": true,
+      "creado": "2026-10-29"
+    },
+    {
       "nombre": "Escritorio Roma",
       "categoria": "dormitorio",
       "fotos": [
