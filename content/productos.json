@@ -112,21 +112,17 @@
     },
     {
       "publicado": true,
-      "precio": "102500",
-      "material": "Melamina blanca",
+      "precio": "109800",
+      "material": "Melamina ",
       "destacado": false,
-      "nombre": "Despenseros",
-      "descripcion": "Modelos de 2 y 4 puertas o puerta, cajón y estantes: desde $ 102.500.",
+      "nombre": "Placard 2 puertas",
+      "descripcion": "Modelos de 2, 4 y 6 puertas con cajón y estantes. Modelos disponibles en colores varios.",
       "fotos": [
-        "img/productos/post_11_a.webp",
-        "img/productos/post_11_b.webp",
-        "img/productos/post_11_c.webp",
-        "img/productos/post_11_d.webp",
-        "img/productos/post_06.webp"
+        "/img/uploads/placard-2-puertas-mvtmgq4rnqt.jpg"
       ],
       "precio_anterior": "",
       "categoria": "guardado",
-      "medidas": ""
+      "medidas": "57x46x181 cm"
     },
     {
       "publicado": true,
