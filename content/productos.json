@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "nombre": "Botinero",
+      "categoria": "guardado",
+      "fotos": [
+        "/img/uploads/botinero-mvtn0sr0giw.jpg",
+        "/img/uploads/botinero-mvtn0adkr1e.jpg"
+      ],
+      "precio": "111700",
+      "precio_anterior": "",
+      "medidas": "62x22x121 cm",
+      "material": "Melamina",
+      "descripcion": "Disponible en colores varios. Capacidad para 18 pares aproximadamente. El precio publicado incluye el costo de envío.",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-10-29"
+    },
+    {
       "nombre": "Placard 6 puertas",
       "categoria": "dormitorio",
       "fotos": [
