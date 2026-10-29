@@ -24,7 +24,7 @@
       "nombre": "Maquillador Hollywood",
       "descripcion": "Espejo con luces y 9 cajones. Reingreso: llegaron pocas unidades.",
       "fotos": [
-        "/img/uploads/maquillador-hollywood-mvtkes01927.jpg"
+        "/img/uploads/maquillador-hollywood-mvtkkscjjsk.jpg"
       ],
       "precio_anterior": "",
       "categoria": "dormitorio",
@@ -96,55 +96,34 @@
     },
     {
       "publicado": true,
-      "precio": "73400",
+      "precio": "140400",
       "material": "Melamina",
-      "destacado": true,
-      "nombre": "Escritorios",
+      "destacado": false,
+      "nombre": "Escritorio Classic",
       "descripcion": "Varios modelos: Base, CS, Gamer, 2 cajones, Dakar, Roma, Classic y para PC. Consultanos por medidas y colores.",
       "fotos": [
-        "img/productos/post_02_a.webp",
-        "img/productos/post_02_b.webp",
-        "img/productos/post_02_c.webp",
-        "img/productos/post_02_d.webp",
-        "img/productos/post_02_e.webp",
-        "img/productos/post_02_f.webp",
-        "img/productos/post_18_b.webp",
-        "img/productos/post_18_c.webp",
-        "img/productos/post_18_d.webp",
-        "img/productos/post_18_e.webp"
+        "/img/uploads/escritorios-mvtl1bua39h.jpg",
+        "/img/uploads/escritorios-mvtl07sw5n4.jpg",
+        "/img/uploads/escritorios-mvtl1sa6e8f.jpg"
       ],
       "precio_anterior": "",
       "categoria": "escritorios",
-      "medidas": ""
+      "medidas": "Altura: 75cm - Ancho: 116cm - Profundidad 60cm"
     },
     {
       "publicado": true,
-      "precio": "131900",
+      "precio": "118500",
       "material": "Melamina madera clara y blanco",
       "destacado": false,
-      "nombre": "Escritorio Classic Bamboo",
-      "descripcion": "Con cajonera de dos cajones.",
+      "nombre": "Escritorio para PC",
+      "descripcion": "El precio incluye el costo de armado",
       "fotos": [
-        "img/productos/post_18_a.webp",
-        "img/productos/post_02_e.webp"
+        "/img/uploads/escritorio-para-pc-mvtl52f4x8x.jpg",
+        "/img/uploads/escritorio-para-pc-mvtl5ejk10z.jpg"
       ],
       "precio_anterior": "",
       "categoria": "escritorios",
-      "medidas": ""
-    },
-    {
-      "publicado": true,
-      "precio": "73400",
-      "material": "Melamina blanca",
-      "destacado": false,
-      "nombre": "Escritorio Orlandi",
-      "descripcion": "",
-      "fotos": [
-        "img/productos/post_05.webp"
-      ],
-      "precio_anterior": "",
-      "categoria": "escritorios",
-      "medidas": ""
+      "medidas": "Medidas 121 x 100 x 44 cm"
     },
     {
       "publicado": true,
