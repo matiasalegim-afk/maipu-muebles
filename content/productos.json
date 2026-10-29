@@ -94,21 +94,17 @@
     },
     {
       "publicado": true,
-      "precio": "109800",
+      "precio": "158700",
       "material": "Melamina blanca",
       "destacado": true,
-      "nombre": "Placares",
-      "descripcion": "Modelos de 2, 3, 4 y 6 puertas con cajones: $ 109.800, $ 158.700, $ 187.200 y $ 266.500. Incluye costo de armado. Varios colores.",
+      "nombre": "Placard 3 puertas",
+      "descripcion": "Modelos de 2,3, 4 y 6 puertas con cajón: disponible en colores varios.",
       "fotos": [
-        "img/productos/post_03_a.webp",
-        "img/productos/post_03_b.webp",
-        "img/productos/post_03_c.webp",
-        "img/productos/post_03_d.webp",
-        "img/productos/post_03_e.webp"
+        "/img/uploads/placard-3-puertas-mvtmnbvgwhn.jpg"
       ],
       "precio_anterior": "",
       "categoria": "guardado",
-      "medidas": "57 × 46 × 181 cm (2 puertas)"
+      "medidas": "85x46x181 cm"
     },
     {
       "publicado": true,
