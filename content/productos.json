@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "nombre": "Mesa de Luz Milenial",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/mesa-de-luz-milenial-mvtjmj4tjpe.jpg",
+        "/img/uploads/mesa-de-luz-milenial-mvtjmz269cj.jpg"
+      ],
+      "precio": "51100",
+      "precio_anterior": "",
+      "medidas": "45x61x38 cm",
+      "material": "Melamina",
+      "descripcion": "Disponible en otros colores. Consultanos!",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-10-29"
+    },
+    {
       "nombre": "BICHUKI",
       "categoria": "guardado",
       "fotos": [
