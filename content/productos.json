@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "nombre": "Escritorio Dakar",
+      "categoria": "escritorios",
+      "fotos": [
+        "/img/uploads/escritorio-dkar-mvtldfhin4r.jpg",
+        "/img/uploads/escritorio-dkar-mvtldpu3hcu.jpg"
+      ],
+      "precio": "82800",
+      "precio_anterior": "100000",
+      "medidas": "Medidas: 75x102x46 cm",
+      "material": "Melamina",
+      "descripcion": "El precio publicado incluye el costo de armado",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-10-29"
+    },
+    {
       "nombre": "Mesa de Luz Milenial",
       "categoria": "dormitorio",
       "fotos": [
