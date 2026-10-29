@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Cocina industrial Usman",
+      "categoria": "cocina",
+      "fotos": [
+        "/img/uploads/cocina-industrial-usman-mvtn6holpin.jpg"
+      ],
+      "precio": "386300",
+      "precio_anterior": "",
+      "medidas": "55cm ancho",
+      "material": "Acero inoxidable",
+      "descripcion": "Cocina industrial de acero inoxidable",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-10-29"
+    },
+    {
       "nombre": "Botinero",
       "categoria": "guardado",
       "fotos": [
