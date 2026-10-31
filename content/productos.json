@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "nombre": "Aparador de Cocina Multiuso",
+      "categoria": "cocina",
+      "fotos": [
+        "/img/uploads/aparador-de-cocina-multiuso-mvwjr51fx0y.jpg",
+        "/img/uploads/aparador-de-cocina-multiuso-mvwjrbipe87.jpg"
+      ],
+      "precio": "196500",
+      "precio_anterior": "",
+      "medidas": "90 x 170 x 39 cm ",
+      "material": "Melamina",
+      "descripcion": "Costo de armado gratis.",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-10-31"
+    },
+    {
       "nombre": "Alacena Arco",
       "categoria": "guardado",
       "fotos": [
