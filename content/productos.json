@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "nombre": "Chifonier Milenial",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/chifonier-milenial-mvwgg7zczh1.jpg",
+        "/img/uploads/chifonier-milenial-mvwgf08yssh.jpg"
+      ],
+      "precio": "114000",
+      "precio_anterior": "",
+      "medidas": "91x60x38",
+      "material": "Melamina",
+      "descripcion": "Armado gratis. Consulta por la variedad de colores disponibles",
+      "destacado": false,
+      "publicado": true,
+      "creado": "2026-10-31"
+    },
+    {
       "nombre": "Chifonier Pack",
       "categoria": "dormitorio",
       "fotos": [
