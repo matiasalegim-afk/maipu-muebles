@@ -1,6 +1,37 @@
 {
   "items": [
     {
+      "nombre": "Bajomesada Express",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/bajomesada-express-mvwi3fmdnqs.jpg"
+      ],
+      "precio": "58900",
+      "precio_anterior": "",
+      "medidas": "40x51x84 cm",
+      "material": "Melamina",
+      "descripcion": "Armado gratis. Consultar por la variedad de modelos.",
+      "destacado": false,
+      "publicado": true,
+      "creado": "2026-10-31"
+    },
+    {
+      "nombre": "Alacena Express Multiuso",
+      "categoria": "cocina",
+      "fotos": [
+        "/img/uploads/foto-mvwhrghfore.jpg",
+        "/img/uploads/alacena-40cm-mvwht2hod7i.jpg"
+      ],
+      "precio": "43800",
+      "precio_anterior": "",
+      "medidas": "50x40x31 cm",
+      "material": "Melamina",
+      "descripcion": "Armado gratis. Consultar por la variedad de modelos.",
+      "destacado": false,
+      "publicado": true,
+      "creado": "2026-10-31"
+    },
+    {
       "nombre": "Aparador de cocina",
       "categoria": "cocina",
       "fotos": [
