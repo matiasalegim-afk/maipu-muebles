@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "nombre": "Alacena Arco",
+      "categoria": "guardado",
+      "fotos": [
+        "/img/uploads/alacena-arco-mvwjceahzd1.jpg",
+        "/img/uploads/alacena-arco-mvwjcj615ji.jpg"
+      ],
+      "precio": "100300",
+      "precio_anterior": "",
+      "medidas": "120 × 46 × 27 cm",
+      "material": "Melamina",
+      "descripcion": "Armado gratis. Terminaciones en aluminio. ",
+      "destacado": false,
+      "publicado": true,
+      "creado": "2026-10-31"
+    },
+    {
       "nombre": "Alacena Potenza ",
       "categoria": "cocina",
       "fotos": [
