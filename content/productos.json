@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "nombre": "Chifonier Orlandi",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/chifonier-orlandi-mvwglb90bdo.jpg",
+        "/img/uploads/chifonier-orlandi-mvwgmlabs1w.jpg"
+      ],
+      "precio": "173000",
+      "precio_anterior": "",
+      "medidas": "118,5cm x 121,5cm x 45cm",
+      "material": "Melamina",
+      "descripcion": "Armado gratis. Consultano0s la variedad de colores disponibles.",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-10-31"
+    },
+    {
       "nombre": "Chifonier Milenial",
       "categoria": "dormitorio",
       "fotos": [
