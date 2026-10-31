@@ -1,6 +1,38 @@
 {
   "items": [
     {
+      "nombre": "Chifonier Dakar",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/comoda-richiezze-mvwfvsku331.jpg",
+        "/img/uploads/comoda-richiezze-mvwfxl2ioj4.jpg"
+      ],
+      "precio": "91900",
+      "precio_anterior": "",
+      "medidas": "91x53x38 cm",
+      "material": "Melamina",
+      "descripcion": "El precio publicado incluye el costo de armado. Consulta por nuestra variedad de modelos.",
+      "destacado": false,
+      "publicado": true,
+      "creado": "2026-10-31"
+    },
+    {
+      "nombre": "Comoda Zero",
+      "categoria": "guardado",
+      "fotos": [
+        "/img/uploads/comoda-zero-mosconi-mvwf8qsvevp.jpg",
+        "/img/uploads/comoda-zero-mosconi-mvwf80hyevw.jpg"
+      ],
+      "precio": "124100",
+      "precio_anterior": "",
+      "medidas": "91x83x38",
+      "material": "Melamina",
+      "descripcion": "Consultar por variedad de colores. El precio publicado incluye el costo de armado",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-10-31"
+    },
+    {
       "nombre": "Comoda Nature",
       "categoria": "guardado",
       "fotos": [
