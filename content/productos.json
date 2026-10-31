@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Aparador de cocina",
+      "categoria": "cocina",
+      "fotos": [
+        "/img/uploads/aparador-de-cocina-mvwgvhv70j2.jpg"
+      ],
+      "precio": "174500",
+      "precio_anterior": "",
+      "medidas": "200x57x51 cm",
+      "material": "Melamina",
+      "descripcion": "Armado gratis. Consultar por variedad de modelos disponibles.",
+      "destacado": false,
+      "publicado": true,
+      "creado": "2026-10-31"
+    },
+    {
       "nombre": "Chifonier Orlandi",
       "categoria": "dormitorio",
       "fotos": [
