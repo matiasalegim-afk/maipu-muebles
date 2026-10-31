@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "nombre": "Comoda Nature",
+      "categoria": "guardado",
+      "fotos": [
+        "/img/uploads/comoda-nature-mvwf45ob2ft.jpg",
+        "/img/uploads/comoda-mvwezxoge9l.jpg"
+      ],
+      "precio": "143400",
+      "precio_anterior": "",
+      "medidas": "90 cm de ancho x 91 cm de alto x 40 cm de prof.",
+      "material": "Melamina",
+      "descripcion": "Consultar por variedad de colores",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-10-31"
+    },
+    {
       "nombre": "Cocina industrial Usman",
       "categoria": "cocina",
       "fotos": [
