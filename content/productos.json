@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "nombre": "Alacena Potenza ",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/alacena-potenza-mvwi9wsqais.jpg",
+        "/img/uploads/alacena-potenza-mvwibelt0ik.jpg"
+      ],
+      "precio": "118.800",
+      "precio_anterior": "",
+      "medidas": "100 × 63,8 × 33,1 cm",
+      "material": "Melamina",
+      "descripcion": "Con bordes de aluminio.",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-10-31"
+    },
+    {
       "nombre": "Bajomesada Express",
       "categoria": "dormitorio",
       "fotos": [
