@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "nombre": "Chifonier Pack",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/chifonier-pack-mvwg7tocdj8.jpg",
+        "/img/uploads/chifonier-pack-mvwg9gwntvi.jpg"
+      ],
+      "precio": "79700",
+      "precio_anterior": "",
+      "medidas": "58 x 91 x 38 cm",
+      "material": "Melamina",
+      "descripcion": "El precio publicado incluye el costo de armado del muebles. Consultar por variedad de colores disponibles",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-10-31"
+    },
+    {
       "nombre": "Chifonier Dakar",
       "categoria": "dormitorio",
       "fotos": [
