@@ -331,20 +331,6 @@
     },
     {
       "publicado": true,
-      "precio": "",
-      "material": "",
-      "destacado": false,
-      "nombre": "Almohada cervical",
-      "descripcion": "Además de muebles tenemos colchones, sommiers y almohadas. Consultanos.",
-      "fotos": [
-        "img/productos/post_12.webp"
-      ],
-      "precio_anterior": "",
-      "categoria": "dormitorio",
-      "medidas": ""
-    },
-    {
-      "publicado": true,
       "precio": "158700",
       "material": "Melamina blanca",
       "destacado": true,
@@ -370,20 +356,6 @@
       "precio_anterior": "",
       "categoria": "guardado",
       "medidas": "57x46x181 cm"
-    },
-    {
-      "publicado": true,
-      "precio": "63200",
-      "material": "Madera y canastos de mimbre",
-      "destacado": true,
-      "nombre": "Organizador con canasto",
-      "descripcion": "Para guardar verduras y frutas. Oferta del día.",
-      "fotos": [
-        "img/productos/post_23.webp"
-      ],
-      "precio_anterior": "",
-      "categoria": "guardado",
-      "medidas": "40 × 30 × 90 cm"
     },
     {
       "publicado": true,
@@ -415,77 +387,6 @@
       "precio_anterior": "",
       "categoria": "escritorios",
       "medidas": "Medidas 121 x 100 x 44 cm"
-    },
-    {
-      "publicado": true,
-      "precio": "150000",
-      "material": "Ecocuero blanco",
-      "destacado": true,
-      "nombre": "Sillón de oficina",
-      "descripcion": "Llegaron pocas unidades.",
-      "fotos": [
-        "img/productos/post_09.webp"
-      ],
-      "precio_anterior": "",
-      "categoria": "escritorios",
-      "medidas": ""
-    },
-    {
-      "publicado": true,
-      "precio": "144300",
-      "material": "Melamina madera y blanco",
-      "destacado": true,
-      "nombre": "Kit de cocina",
-      "descripcion": "Alacena + bajomesada. Consultanos por otros modelos.",
-      "fotos": [
-        "img/productos/post_10.webp"
-      ],
-      "precio_anterior": "",
-      "categoria": "cocina",
-      "medidas": ""
-    },
-    {
-      "publicado": true,
-      "precio": "",
-      "material": "Melamina blanca",
-      "destacado": false,
-      "nombre": "Cocina completa",
-      "descripcion": "Alacena, bajomesada, bacha y porta microondas o aparador de cocina. Consultá precio.",
-      "fotos": [
-        "img/productos/post_07.webp",
-        "img/productos/post_08.webp"
-      ],
-      "precio_anterior": "",
-      "categoria": "cocina",
-      "medidas": ""
-    },
-    {
-      "publicado": true,
-      "precio": "180400",
-      "material": "Madera clara",
-      "destacado": true,
-      "nombre": "Rack de TV",
-      "descripcion": "Puertas con listones. Última unidad.",
-      "fotos": [
-        "img/productos/post_19.webp"
-      ],
-      "precio_anterior": "",
-      "categoria": "living",
-      "medidas": ""
-    },
-    {
-      "publicado": true,
-      "precio": "",
-      "material": "Madera y blanco",
-      "destacado": false,
-      "nombre": "Bahiut Doors",
-      "descripcion": "Bahiut / rack con puertas.",
-      "fotos": [
-        "img/productos/post_04.webp"
-      ],
-      "precio_anterior": "",
-      "categoria": "living",
-      "medidas": ""
     },
     {
       "publicado": true,
