@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Respaldo Tachas",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/foto-mw276jsj6sp.jpg"
+      ],
+      "precio": "63000",
+      "precio_anterior": "",
+      "medidas": "160",
+      "material": "Pana / Ecocuero",
+      "descripcion": "Consultanos por otras medidas!",
+      "destacado": false,
+      "publicado": true,
+      "creado": "2026-11-04"
+    },
+    {
       "nombre": "Estantería Industrial Cubo",
       "categoria": "guardado",
       "fotos": [
