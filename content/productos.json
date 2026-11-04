@@ -4,14 +4,14 @@
       "nombre": "Estantería Industrial",
       "categoria": "dormitorio",
       "fotos": [
-        "/img/uploads/foto-mw260kjy3p9.jpg"
+        "/img/uploads/estanteria-industrial-mw2648am4id.jpg"
       ],
       "precio": "133300",
       "precio_anterior": "",
       "medidas": "60x30x150",
       "material": "Caño reforzado - Madera maciza",
       "descripcion": "",
-      "destacado": true,
+      "destacado": false,
       "publicado": true,
       "creado": "2026-11-04"
     },
