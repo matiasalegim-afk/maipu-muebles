@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Respaldo Canelon",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/respaldo-canelon-mw284gh6fco.jpg"
+      ],
+      "precio": "81700",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "pana",
+      "descripcion": "Consultar por otra medida",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-04"
+    },
+    {
       "nombre": "Respaldo Tachas",
       "categoria": "dormitorio",
       "fotos": [
