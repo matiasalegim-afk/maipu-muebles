@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Silla Yanina",
+      "categoria": "cocina",
+      "fotos": [
+        "/img/uploads/foto-mw24ovr50bb.jpg"
+      ],
+      "precio": "45000",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "",
+      "descripcion": "Consultar por otros modelos ",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-04"
+    },
+    {
       "nombre": "Aparador de Cocina Multiuso",
       "categoria": "cocina",
       "fotos": [
