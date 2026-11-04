@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Mesa de arrime",
+      "categoria": "living",
+      "fotos": [
+        "/img/uploads/mesa-de-arrime-mw28n6aybqk.jpg"
+      ],
+      "precio": "32000",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Caño reforzado y madera maciza",
+      "descripcion": "",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-04"
+    },
+    {
       "nombre": "Respaldo Canelon",
       "categoria": "dormitorio",
       "fotos": [
