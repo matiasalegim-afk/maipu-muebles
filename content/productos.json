@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Banqueta Tonet",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/banqueta-alta-mw24vsxc7tw.jpg"
+      ],
+      "precio": "42600",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "",
+      "descripcion": "Material: caño reforzado y eco cuero. Consultar por otros modelos disponibles",
+      "destacado": false,
+      "publicado": true,
+      "creado": "2026-11-04"
+    },
+    {
       "nombre": "Silla Yanina",
       "categoria": "cocina",
       "fotos": [
