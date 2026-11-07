@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Silla Hindu Baja",
+      "categoria": "cocina",
+      "fotos": [
+        "/img/uploads/silla-hindu-baja-mw6jzg2l67v.jpg"
+      ],
+      "precio": "22600",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "",
+      "descripcion": "",
+      "destacado": false,
+      "publicado": true,
+      "creado": "2026-11-07"
+    },
+    {
       "nombre": "Silla Hindu Alta",
       "categoria": "cocina",
       "fotos": [
