@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Mesa para niños",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/foto-mw6l73yca5j.jpg"
+      ],
+      "precio": "37500",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Madera maciza",
+      "descripcion": "",
+      "destacado": false,
+      "publicado": true,
+      "creado": "2026-11-07"
+    },
+    {
       "nombre": "Sillita para niños",
       "categoria": "dormitorio",
       "fotos": [
