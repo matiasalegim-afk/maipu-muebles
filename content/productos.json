@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Silla 6 fajas",
+      "categoria": "cocina",
+      "fotos": [
+        "/img/uploads/silla-6-fajas-mw6jcvgqsfg.jpg"
+      ],
+      "precio": "31700",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Madera maciza",
+      "descripcion": "",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-07"
+    },
+    {
       "nombre": "Mesa de arrime",
       "categoria": "living",
       "fotos": [
