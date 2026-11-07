@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Silla Eco 3 fajas",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/silla-eco-3-fajas-mw6k7jvtq2q.jpg"
+      ],
+      "precio": "22600",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Madera maciza",
+      "descripcion": "",
+      "destacado": false,
+      "publicado": true,
+      "creado": "2026-11-07"
+    },
+    {
       "nombre": "Silla Hindu Baja",
       "categoria": "cocina",
       "fotos": [
