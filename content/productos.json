@@ -1,6 +1,36 @@
 {
   "items": [
     {
+      "nombre": "Sillita para niños",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/foto-mw6l28qjktd.jpg"
+      ],
+      "precio": "16300",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "Madera maciza",
+      "descripcion": "",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-07"
+    },
+    {
+      "nombre": "Mesa de luz Retro",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/mesa-de-luz-retro-mw6kbwoksz0.jpg"
+      ],
+      "precio": "",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "",
+      "descripcion": "",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-07"
+    },
+    {
       "nombre": "Silla Eco 3 fajas",
       "categoria": "cocina",
       "fotos": [
