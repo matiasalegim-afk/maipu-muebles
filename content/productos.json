@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Mesa redonda",
+      "categoria": "living",
+      "fotos": [
+        "/img/uploads/mesa-redonda-mwaq4o62sjn.jpg"
+      ],
+      "precio": "211600",
+      "precio_anterior": "",
+      "medidas": "120cm diametro",
+      "material": "Madera",
+      "descripcion": "",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-10"
+    },
+    {
       "nombre": "Despensero porta-microondas",
       "categoria": "cocina",
       "fotos": [
