@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Organizador con canasto",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/foto-mwao7k0gpez.jpg"
+      ],
+      "precio": "77700",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "madera - plastico",
+      "descripcion": "Tenemos variedad de tamaños",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-10"
+    },
+    {
       "nombre": "Mesa para niños",
       "categoria": "dormitorio",
       "fotos": [
