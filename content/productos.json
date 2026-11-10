@@ -4,6 +4,36 @@
       "nombre": "Bajomesada",
       "categoria": "cocina",
       "fotos": [
+        "/img/uploads/bajomesada-mwarluq4qzh.jpg"
+      ],
+      "precio": "158400",
+      "precio_anterior": "",
+      "medidas": "1,4m ancho",
+      "material": "Madera",
+      "descripcion": "También disponible con 1,6m de ancho. Consultanos!",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-10"
+    },
+    {
+      "nombre": "Alacena",
+      "categoria": "cocina",
+      "fotos": [
+        "/img/uploads/alacena-mwarhv3wf58.jpg"
+      ],
+      "precio": "78300",
+      "precio_anterior": "",
+      "medidas": "1m de ancho",
+      "material": "",
+      "descripcion": "También disponible en 1,2m de ancho. Consultanos!",
+      "destacado": false,
+      "publicado": true,
+      "creado": "2026-11-10"
+    },
+    {
+      "nombre": "Bajomesada",
+      "categoria": "cocina",
+      "fotos": [
         "/img/uploads/bajomesada-mwardsn0te8.jpg"
       ],
       "precio": "130.900",
