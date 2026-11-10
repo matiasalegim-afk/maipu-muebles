@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Alacena ",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/alacena-mwarotyz47w.jpg"
+      ],
+      "precio": "117000",
+      "precio_anterior": "",
+      "medidas": "1,4m ancho",
+      "material": "Madera",
+      "descripcion": "También disponible con 1,6m de ancho. Consultanos!",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-10"
+    },
+    {
       "nombre": "Bajomesada",
       "categoria": "cocina",
       "fotos": [
