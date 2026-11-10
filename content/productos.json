@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Despensero porta-microondas",
+      "categoria": "cocina",
+      "fotos": [
+        "/img/uploads/despensero-porta-microondas-mwapsk9gxq9.jpg"
+      ],
+      "precio": "153500",
+      "precio_anterior": "",
+      "medidas": "",
+      "material": "",
+      "descripcion": "Consultar medidas.",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-10"
+    },
+    {
       "nombre": "Organizador con canasto",
       "categoria": "dormitorio",
       "fotos": [
