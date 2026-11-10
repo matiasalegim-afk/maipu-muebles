@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Cristalera",
+      "categoria": "living",
+      "fotos": [
+        "/img/uploads/cristalera-mwaqar06lvw.jpg"
+      ],
+      "precio": "197700",
+      "precio_anterior": "",
+      "medidas": "0,50m de ancho",
+      "material": "Madera ",
+      "descripcion": "Incluye vidrios y perillas. Consultar en otra medidas",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-10"
+    },
+    {
       "nombre": "Mesa redonda",
       "categoria": "living",
       "fotos": [
