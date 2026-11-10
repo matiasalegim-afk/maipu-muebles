@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Bajomesada",
+      "categoria": "cocina",
+      "fotos": [
+        "/img/uploads/bajomesada-mwardsn0te8.jpg"
+      ],
+      "precio": "130.900",
+      "precio_anterior": "",
+      "medidas": "1m de ancho",
+      "material": "Madera",
+      "descripcion": "También disponible en 1,20m de ancho",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-10"
+    },
+    {
       "nombre": "Cristalera",
       "categoria": "living",
       "fotos": [
