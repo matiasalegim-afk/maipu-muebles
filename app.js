@@ -65,7 +65,7 @@ function motion(){
  gsap.utils.toArray('.parallax').forEach(i=>gsap.fromTo(i,{yPercent:-8},{yPercent:0,ease:'none',scrollTrigger:{trigger:i.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
  gsap.utils.toArray('.split').forEach(h=>{gsap.from(h,{y:40,opacity:0,duration:1.2,ease:E,scrollTrigger:{trigger:h,start:'top 88%'}})});
  gsap.utils.toArray('.section .reveal').forEach(r=>gsap.from(r,{y:32,opacity:0,duration:1,ease:E,scrollTrigger:{trigger:r,start:'top 90%'}}));
- gsap.utils.toArray('.cat .mask, .card .mask, .medida__media').forEach(m=>gsap.from(m,{clipPath:'inset(0 0 100% 0)',duration:1.3,ease:E,scrollTrigger:{trigger:m,start:'top 92%'}}));
+ gsap.utils.toArray('.cat .mask, .card .mask').forEach(m=>gsap.from(m,{clipPath:'inset(0 0 100% 0)',duration:1.3,ease:E,scrollTrigger:{trigger:m,start:'top 92%'}}));
  gsap.utils.toArray('.cta__bars i').forEach((b,i)=>gsap.from(b,{scaleY:0,transformOrigin:'top',duration:1.4,ease:E,delay:i*.12,scrollTrigger:{trigger:'.cta',start:'top 75%'}}));
 
 }

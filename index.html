@@ -15,14 +15,14 @@
 <link rel="preload" href="fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="fonts/intertight.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="styles.css">
-<link rel="preload" as="image" href="img/hero-900.webp" imagesrcset="img/hero-900.webp 900w, img/hero.webp 1800w" imagesizes="(max-width:900px) 100vw, 40vw">
+<link rel="preload" as="image" href="img/hero-900.webp?v=2" imagesrcset="img/hero-900.webp?v=2 900w, img/hero.webp?v=2 1080w" imagesizes="(max-width:900px) 100vw, 40vw">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FurnitureStore", "name": "Maipú Muebles", "url": "https://maipumuebles.netlify.app/", "image": "https://maipumuebles.netlify.app/og.jpg", "logo": "https://maipumuebles.netlify.app/icon-512.png", "description": "Mueblería en San Miguel de Tucumán. Hace 26 años.", "address": {"@type": "PostalAddress", "streetAddress": "Maipú 384", "addressLocality": "San Miguel de Tucumán", "addressRegion": "Tucumán", "postalCode": "T4000", "addressCountry": "AR"}, "telephone": "+543816566975", "geo": {"@type": "GeoCoordinates", "latitude": -26.825267, "longitude": -65.206527}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "15:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "17:00", "closes": "21:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "14:00"}], "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.3", "reviewCount": "43"}, "sameAs": ["https://www.instagram.com/maipumueblestuc/", "https://facebook.com/885022861365785"]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
 <header class="nav" id="nav">
   <a href="#top" class="brand" aria-label="Maipú Muebles, inicio"><img src="logo.svg" width="36" height="36" alt=""><span>Maipú<em>Muebles</em></span></a>
-  <nav aria-label="Principal" id="nav-menu"><a href="#destacados">Lo nuevo</a><a href="#ambientes">Ambientes</a><a href="#catalogo">Catálogo</a><a href="#medida">A medida</a><a href="#local">El local</a></nav>
+  <nav aria-label="Principal" id="nav-menu"><a href="#destacados">Lo nuevo</a><a href="#ambientes">Ambientes</a><a href="#catalogo">Catálogo</a><a href="#local">El local</a></nav>
   <a class="btn btn--sm" data-wa="Hola Maipú Muebles, quería hacer una consulta." href="#">WhatsApp</a>
   <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu"><i></i><i></i></button>
 </header>
@@ -37,7 +37,7 @@
     <div class="hero__cta reveal"><a class="btn" href="#catalogo">Ver catálogo</a><a class="link" data-wa="Hola, quería consultar por un mueble." href="#">Escribinos por WhatsApp</a></div>
     <dl class="hero__facts reveal"><div><dt>4,3<small>/5</small></dt><dd>43 reseñas en Google</dd></div><div><dt>Cuotas</dt><dd>con tarjeta</dd></div><div><dt>Envío</dt><dd>en Gran Tucumán</dd></div></dl>
   </div>
-  <figure class="hero__media"><div class="mask"><img class="parallax" src="img/hero-900.webp" srcset="img/hero-900.webp 900w, img/hero.webp 1800w" sizes="(max-width:900px) 100vw, 40vw" alt="Living luminoso con butaca y lámpara de pie" width="1800" height="2700" fetchpriority="high"></div><figcaption>Ambiente living</figcaption></figure>
+  <figure class="hero__media"><div class="mask"><img class="parallax" src="img/hero-900.webp?v=2" srcset="img/hero-900.webp?v=2 900w, img/hero.webp?v=2 1080w" sizes="(max-width:900px) 100vw, 40vw" alt="Cocina blanca con alacena, bajo mesada y módulo para microondas" width="1080" height="1350" fetchpriority="high"></div><figcaption>Ambiente cocina</figcaption></figure>
 </section>
 
 <section class="dest" id="destacados" aria-labelledby="dest-title">
@@ -64,22 +64,8 @@
   <p class="note">Precios de referencia, sujetos a cambio. Stock y precio final se confirman por WhatsApp.</p>
 </section>
 
-<section class="medida" id="medida">
-  <div class="medida__media mask"><img class="parallax" loading="lazy" src="img/amb-familia.webp" alt="Familia jugando en casa" width="1278" height="896"></div>
-  <div class="medida__text">
-    <p class="eyebrow eyebrow--light">03 · A medida</p>
-    <h2 class="h2 split">Si no entra, lo pensamos para tu espacio.</h2>
-    <ol class="steps">
-      <li><span>01</span><div><h3>Mandanos las medidas</h3><p>Una foto del lugar y el ancho, alto y profundidad.</p></div></li>
-      <li><span>02</span><div><h3>Te pasamos opciones</h3><p>Materiales, terminaciones y presupuesto por escrito.</p></div></li>
-      <li><span>03</span><div><h3>Lo entregamos</h3><p>Coordinamos día y horario de entrega en tu casa.</p></div></li>
-    </ol>
-    <a class="btn btn--light" data-wa="Hola, quería consultar por un mueble a medida. Les paso medidas:" href="#">Consultar a medida</a>
-  </div>
-</section>
-
 <section class="section trust" id="confianza">
-  <header class="section__head"><p class="eyebrow">04 · Nosotros</p><h2 class="h2 split" id="nos-title">Muebles que se quedan. Gente que responde.</h2><p class="lead" id="nos-text"></p></header>
+  <header class="section__head"><p class="eyebrow">03 · Nosotros</p><h2 class="h2 split" id="nos-title">Muebles que se quedan. Gente que responde.</h2><p class="lead" id="nos-text"></p></header>
   <div class="trust__grid">
     <div class="score reveal"><p class="score__n">4,3</p><p class="stars" role="img" aria-label="4,3 de 5 estrellas"><span style="--v:86%"></span></p><p class="muted">43 reseñas en Google Maps</p></div>
     <blockquote class="quote reveal"><p>Lo que más se repite en las reseñas: <em>variedad de materiales</em>, <em>facilidades de pago</em>, <em>buenas ofertas</em> y el <em>flete</em> a domicilio.</p><cite>Resumen de reseñas públicas de Google</cite></blockquote>
@@ -94,7 +80,7 @@
 
 <section class="local" id="local">
   <div class="local__text">
-    <p class="eyebrow">05 · El local</p>
+    <p class="eyebrow">04 · El local</p>
     <h2 class="h2 split">Vení a probar el sillón antes de llevarlo.</h2>
     <address>Maipú 384<br>San Miguel de Tucumán, T4000</address>
     <dl class="hours" id="hours"></dl>
