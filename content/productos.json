@@ -257,7 +257,7 @@
     },
     {
       "nombre": "Estantería Industrial Cubo",
-      "categoria": "guardado",
+      "categoria": "escritorios",
       "fotos": [
         "/img/uploads/estanteria-industrial-cubo-mw26l1qclpb.jpg"
       ],
@@ -272,7 +272,7 @@
     },
     {
       "nombre": "Estantería Industrial",
-      "categoria": "dormitorio",
+      "categoria": "escritorios",
       "fotos": [
         "/img/uploads/estanteria-industrial-mw2648am4id.jpg"
       ],
@@ -349,7 +349,7 @@
     },
     {
       "nombre": "Alacena Potenza ",
-      "categoria": "cocina",
+      "categoria": "guardado",
       "fotos": [
         "/img/uploads/alacena-potenza-mvwil1dzlwu.jpg",
         "/img/uploads/alacena-potenza-mvwibelt0ik.jpg"
@@ -359,13 +359,13 @@
       "medidas": "100 × 63,8 × 33,1 cm",
       "material": "Melamina",
       "descripcion": "Con bordes de aluminio.",
-      "destacado": true,
+      "destacado": false,
       "publicado": true,
       "creado": "2026-10-31"
     },
     {
       "nombre": "Bajomesada Express",
-      "categoria": "dormitorio",
+      "categoria": "guardado",
       "fotos": [
         "/img/uploads/bajomesada-express-mvwi3fmdnqs.jpg"
       ],
@@ -380,7 +380,7 @@
     },
     {
       "nombre": "Alacena Express Multiuso",
-      "categoria": "cocina",
+      "categoria": "guardado",
       "fotos": [
         "/img/uploads/foto-mvwhrghfore.jpg",
         "/img/uploads/alacena-40cm-mvwht2hod7i.jpg"
@@ -719,7 +719,7 @@
       "medidas": "56x38x38cm"
     },
     {
-      "destacado": true,
+      "destacado": false,
       "publicado": true,
       "nombre": "Mesa de Luz Express",
       "categoria": "dormitorio",
