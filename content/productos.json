@@ -2,7 +2,7 @@
   "items": [
     {
       "nombre": "Alacena ",
-      "categoria": "dormitorio",
+      "categoria": "cocina",
       "fotos": [
         "/img/uploads/alacena-mwarotyz47w.jpg"
       ],
@@ -11,7 +11,7 @@
       "medidas": "1,4m ancho",
       "material": "Madera",
       "descripcion": "También disponible con 1,6m de ancho. Consultanos!",
-      "destacado": true,
+      "destacado": false,
       "publicado": true,
       "creado": "2026-11-10"
     },
