@@ -707,7 +707,7 @@
       "publicado": true,
       "precio": "41800",
       "material": "Melamina",
-      "destacado": false,
+      "destacado": true,
       "nombre": "Mesa de Luz Zero",
       "descripcion": "Disponible en colores varios.",
       "fotos": [
