@@ -459,7 +459,7 @@
     },
     {
       "nombre": "Chifonier Dakar",
-      "categoria": "dormitorio",
+      "categoria": "guardado",
       "fotos": [
         "/img/uploads/comoda-richiezze-mvwfvsku331.jpg",
         "/img/uploads/comoda-richiezze-mvwfxl2ioj4.jpg"
@@ -655,7 +655,7 @@
         "/img/uploads/placard-3-puertas-mvtmnbvgwhn.jpg"
       ],
       "precio_anterior": "",
-      "categoria": "guardado",
+      "categoria": "dormitorio",
       "medidas": "85x46x181 cm"
     },
     {
@@ -669,7 +669,7 @@
         "/img/uploads/placard-2-puertas-mvtmgq4rnqt.jpg"
       ],
       "precio_anterior": "",
-      "categoria": "guardado",
+      "categoria": "dormitorio",
       "medidas": "57x46x181 cm"
     },
     {
