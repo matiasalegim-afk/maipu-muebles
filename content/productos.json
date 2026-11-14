@@ -71,7 +71,7 @@
       "medidas": "0,50m de ancho",
       "material": "Madera ",
       "descripcion": "Incluye vidrios y perillas. Consultar en otra medidas",
-      "destacado": true,
+      "destacado": false,
       "publicado": true,
       "creado": "2026-11-10"
     },
@@ -101,13 +101,13 @@
       "medidas": "",
       "material": "",
       "descripcion": "Consultar medidas.",
-      "destacado": true,
+      "destacado": false,
       "publicado": true,
       "creado": "2026-11-10"
     },
     {
       "nombre": "Organizador con canasto",
-      "categoria": "dormitorio",
+      "categoria": "guardado",
       "fotos": [
         "/img/uploads/foto-mwao7k0gpez.jpg"
       ],
@@ -161,7 +161,7 @@
       "medidas": "",
       "material": "",
       "descripcion": "Consultar el precio de la mesa mas grande!\n",
-      "destacado": true,
+      "destacado": false,
       "publicado": true,
       "creado": "2026-11-07"
     },
