@@ -236,7 +236,7 @@
       "medidas": "1 1/2",
       "material": "pana",
       "descripcion": "Consultar por disponibilidad en otras medidas",
-      "destacado": true,
+      "destacado": false,
       "publicado": true,
       "creado": "2026-11-04"
     },
