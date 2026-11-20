@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Cristalera",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/cristalera-mwp14ybe6wm.jpg"
+      ],
+      "precio": "197700",
+      "precio_anterior": "",
+      "medidas": "0,50 m ancho",
+      "material": "Madera",
+      "descripcion": "",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-20"
+    },
+    {
       "nombre": "Cocina industrial Usman",
       "categoria": "cocina",
       "fotos": [
