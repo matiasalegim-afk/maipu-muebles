@@ -32,7 +32,7 @@
     },
     {
       "nombre": "Cristalera",
-      "categoria": "dormitorio",
+      "categoria": "living",
       "fotos": [
         "/img/uploads/cristalera-mwp14ybe6wm.jpg"
       ],
@@ -41,7 +41,7 @@
       "medidas": "0,50 m ancho",
       "material": "Madera",
       "descripcion": "",
-      "destacado": true,
+      "destacado": false,
       "publicado": true,
       "creado": "2026-11-20"
     },
