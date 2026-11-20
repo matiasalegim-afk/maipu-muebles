@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Rack Doors",
+      "categoria": "guardado",
+      "fotos": [
+        "/img/uploads/rack-doors-mwp1ef25wh4.jpg"
+      ],
+      "precio": "175000",
+      "precio_anterior": "",
+      "medidas": "1.30m ancho",
+      "material": "Madera",
+      "descripcion": "También tenemos en 170cm ",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-20"
+    },
+    {
       "nombre": "Baulera",
       "categoria": "dormitorio",
       "fotos": [
