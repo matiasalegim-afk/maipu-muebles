@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "nombre": "Baulera",
+      "categoria": "dormitorio",
+      "fotos": [
+        "/img/uploads/foto-mwp1858t2c2.jpg"
+      ],
+      "precio": "85000",
+      "precio_anterior": "",
+      "medidas": "1m",
+      "material": "Madera",
+      "descripcion": "",
+      "destacado": true,
+      "publicado": true,
+      "creado": "2026-11-20"
+    },
+    {
       "nombre": "Cristalera",
       "categoria": "dormitorio",
       "fotos": [
